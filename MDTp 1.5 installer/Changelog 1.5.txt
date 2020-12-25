@@ -1,0 +1,78 @@
+﻿WPF Fenster für Capture Tasksequenz über Powershell
+Neues Capture_auto_Import Template
+SIT_PC_Install_Documentation jetzt in sortierter CSV statt TXT
+Geplanter Task für Skripte auf dem Server (alle 5 Minuten)
+Description zu Imagename hinzufügen (textbox, variable)
+Automatisierter Imageimport nach Aufzeichung (textfile auf dem MDT-Server mit Imagepfad)
+MDT-Tool Auswertung auf CSV umändern
+Domain-Config Window
+WDS-Server Bootimage-Status
+WDS-Server Bootimages aktivieren / deaktivieren (sucht nach Images mit Lite* oder Zero* und aktiviert nur diese)
+PXE-Boot bei Installationsstart deaktivieren (WDS-Prestage per WDSUTIL auf MDT Server)
+CSV-Buddy Verknüpfung für PC-Infos
+Customsettings.ini, TasksequenceID mit ' auskommentiert, Update zerstört Deploymentshare nicht mehr
+Inventarnummer in Tasksequenz eingeben (DB?) (Assettag) 
+unzulässige Sonderzeichen in PC-Namen konvertieren = https://docs.microsoft.com/de-de/troubleshoot/windows-server/identity/naming-conventions-for-computer-domain-site-ou
+OSDComputername während Installation anzeigen
+IT Organization Branding Litetouch
+Inventarnummer überlebt Neuinstallation (SQL-Abfrage eingebaut, greift nur wenn manuelle Erfassung nicht erfolgt ist), Fenster für PC-Name wird nur angezeigt, wenn kein OSDComputername in der Datenbank gefunden wird
+WDS-Status im MDTp-Tool (aktive Images, gesperrte und keinF12 PCs anzeigen)
+Fix für Image-Import -> Powersehllscript kann nur über extra Prozess (CMD) im richtigen Kontext ausgeführt werden, sonst bleibt OperatingSystems.xml leer
+Update Deploymentshare image
+Import in WDS (1.2 finished)
+
+Begin 1.3:
+Domainconfig erweitern: lokales Adminpasswort, Standard-Homepage, Windows-10 Key (MAK oder KMS)
+dc_tools_copy in Installscript und als Desktopverknüpfung -> nur 1x ausführen, kein extra UI, bei Updates automatisch auch auf dem DC
+Templates mit Schuldomain importieren
+MDTp_Tool redesign
+csv-import -> WDS PXE Prestage ohne F12 , Tasksequence schaltet pxe aus, CSV-Import mit Assettag in Datenbank (Inventarnummer)
+Templates mit Schuldomain importieren -> tasksequence_id für Netman und Standardapps anpassen
+Task Sequence Import Button -> OS Auswahl GUID?! Ekelhaft...
+UIID PC-Infos
+Installscript anpassen -> Domainconfig nicht überschreiben -> muster_domainconfig wird geladen, wenn keine domainconfig.csv vorhanden
+Bei Neuimport Assettag vorher sichern!
+CSV löschen -> Assettags, UUID, MAC und Hostname werden in csv geloggt -> kann wieder importiert werden :)
+
+Begin 1.4:
+Datenbank-PCs anzeigen?! -> Abfrage WDS-ClientID welches PXE-Image -> csv-file -> Mainboard, Tasksequence, Imagename 
+DART integrieren (1.4) !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	- Desktop Optimization Pack 2015 (VLSC) -> DART 10 installieren -> Tools.Cab exportieren -> PE anpassen -> nur Zerotouch -> Unattend.xml für Start des PE austauschen (C:\Programme...\ADK..\Templates) -> Zusätzliches Skript für Dart im Image hinzufügen / anpassen, was Update des Shares erlaubt -> Profit
+BCDedit PXE_boot primär, windows 10 bootloader nicht primär?
+
+Begin 1.4.5:
+staggered deploy?! -> PC legt Datei auf Server, beim Löschen wird Installation gestartet?! 
+	- Haken für automatisch starten -> Dateien werden alle X Sekunden gelöscht -> Servertask
+Imagefiles in Tasksequence austauschen
+Tabelle lässt sich nach allen Spalten filtern
+Templates werden nur von der aktuellsten Version übernommen (Versionsnummer wird berücksichtigt)
+Sinnvolle Statusmeldung (fast überall)
+*testing* WOL tools 
+DB-Info neu laden
+Tabbed Interface, Dockpanel
+MDT-Monitoring
+WOL in Tabelle (Button)
+
+Begin 1.5:
+
+Metro UI complete rewrite, all UI xml in one file, all working code in 1 collpsable file (#region)
+switch everything to english -> learn or die
+Status messages in all tabs in the same place
+code cleanup
+folder rework, clean up broken TS parts
+import images with local path not network (network cut and paste needs 2x space, because copies first and deletes the other file, local path moves correctly)
+
+
+In-Progress:
+-------
+
+Treiber Import
+
+
+To-Do:
+-------
+WDS PXE skip mit FTP Thinclients?9:19 PM 12/6/2020
+TS ohne PXE skip
+pc restart
+DHCP Leasetime verlängern
+Skripte auf UUID umstellen für Tablets?! -> neue Sequenzen mit passenden Skripten

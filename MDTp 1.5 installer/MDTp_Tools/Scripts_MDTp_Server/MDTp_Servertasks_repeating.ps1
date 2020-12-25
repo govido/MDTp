@@ -5,7 +5,7 @@ New-PSDrive -Name "DS001" -PSProvider MDTProvider -Root "D:\DeploymentShare"
 $today = Get-Date -Format yyyy_MM_dd_HH:mm:ss
 
 #get all csv-files, import as one csv
-$images = import-csv -Path  (Get-ChildItem -Path "D:\DeploymentShare\Scripts\SIT\Serverscripts\MDT_Import" -Filter '*.csv').FullName
+$images = import-csv -Path  (Get-ChildItem -Path "D:\DeploymentShare\Scripts\MDTp\Servertasks\OS_Import" -Filter '*.csv').FullName
 
 foreach ($image in $images) {
 
@@ -16,17 +16,17 @@ foreach ($image in $images) {
 
     $report = @()
     if (Test-Path -path "D:\DeploymentShare\Operating Systems\" + $image.foldername + "\" + $image.foldername + ".wim") {
-        Remove-Item "D:\DeploymentShare\Scripts\SIT\Serverscripts\MDT_Import\import_os_" + $image.Foldername + ".csv" 
+        Remove-Item "D:\DeploymentShare\Scripts\MDTp\Servertasks\OS_Import\import_os_" + $image.Foldername + ".csv" 
         $success = "Import success!"    
     }
     else { $success = "Import failed! Check MDTp-Path, free available space or wrong filenames" }
     $report += New-Object psobject -Property @{Date = $today; Imagepath = $image.Imagepath; Foldername = $image.foldername; Description = $Description; Result = $success }
-    $report | select Date, Imagepath, Folder, Description | export-csv "D:\MDTp_Tools\Import-Logs\Import_OS_log.csv" -NoTypeInformation -append
+    $report | Select-Object Date, Imagepath, Folder, Description | export-csv "D:\MDTp_Tools\Import-Logs\Import_OS_log.csv" -NoTypeInformation -append
 }
 
 # deactivate pxe start if client install has started successfully (client gets entry in the WDS-Server to skip PXE, loading the OS almost instant)
-$pxe_pcs = import-csv -Path  (Get-ChildItem -Path "D:\DeploymentShare\Scripts\SIT\Serverscripts\WDS_PXE" -Filter '*.csv').FullName
-$csv_files_pxe = (Get-ChildItem -Path "D:\DeploymentShare\Scripts\SIT\Serverscripts\WDS_PXE" -Filter '*.csv').FullName
+$pxe_pcs = import-csv -Path  (Get-ChildItem -Path "D:\DeploymentShare\Scripts\MDTp\Servertasks\WDS_PXE" -Filter '*.csv').FullName
+$csv_files_pxe = (Get-ChildItem -Path "D:\DeploymentShare\Scripts\MDTp\Servertasks\WDS_PXE" -Filter '*.csv').FullName
 
 foreach ($pc in $pxe_pcs) {
     
@@ -50,7 +50,7 @@ foreach ($pc in $pxe_pcs) {
 
     $report = @()
     $report += New-Object psobject -Property @{Date = $today; Hostname = $pc.Hostname; ClientID = $pc.ClientID }
-    $report | select Date, Hostname, ClientID | export-csv "D:\MDTp_Tools\Import-Logs\pxe_off_log.csv" -NoTypeInformation -append
+    $report | Select-Object Date, Hostname, ClientID | export-csv "D:\MDTp_Tools\Import-Logs\pxe_off_log.csv" -NoTypeInformation -append
 }
 
 Remove-Item $csv_files_pxe
@@ -63,7 +63,7 @@ if (Test-Path -path "D:\DeploymentShare\MDTp_Staggered_Deploy\automatic_staggere
 
 # Driver Import
 
-$driverfolder = (Get-ChildItem -Path "D:\MDT-Import\Drivers" -Directory).FullName
+$driverfolder = (Get-ChildItem -Path "D:\MDTp-Import\Drivers" -Directory).FullName
 
 foreach ($driverpack in $driverfolder) {
 
@@ -76,7 +76,7 @@ foreach ($driverpack in $driverfolder) {
         import-mdtdriver -path $driverpath -SourcePath $driverpack -Verbose
         $report = @()
         $report += New-Object psobject -Property @{Date = $today; Foldername = $infofile.driverfoldername; PCinfos = $infofile.pcinfos}
-        $report | select Date, Mainboard, PCinfos | export-csv "D:\MDTp_Tools\Import-Logs\Import_Drivers_log.csv" -NoTypeInformation -append
+        $report | Select-Object Date, Mainboard, PCinfos | export-csv "D:\MDTp_Tools\Import-Logs\Import_Drivers_log.csv" -NoTypeInformation -append
         Rename-Item -path $csvname -newname import_finished_csv
     }
     else {
