@@ -69,6 +69,21 @@
 					<ComboBox Name="MAccent" Margin="0 8 0 8" Width="Auto" SelectedIndex="1" Background="#A2717171"/>
 				</StackPanel>
 			</Controls:Flyout>
+			<Controls:Flyout Name="FlyoutTSinfo" Header="TS Info / OS Change" Position="Right" Width="450" Theme="Light" Background="Orange" AreAnimationsEnabled="True" AnimateOpacity="True">
+				<StackPanel Orientation="Vertical" HorizontalAlignment="Stretch">
+					<Label HorizontalAlignment="Center" VerticalAlignment="Top" Content="Select existing tasksequence:" FontWeight="Bold" Margin="0,0,0,0"/>
+					<ComboBox HorizontalAlignment="Center" BorderBrush="Black" BorderThickness="1" Height="auto" VerticalAlignment="Top" Width="auto" MinWidth="250" Margin="5,5,5,5" Name="ts_combobox"/>
+					<TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" TextWrapping="Wrap" Text="TS Beschreibung:" Margin="5,5,5,5" FontWeight="Bold"/>
+					<TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" TextWrapping="Wrap" Text="TS-Info" Margin="5,5,5,5" Name="tsinfo_text"/>
+					<TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" TextWrapping="Wrap" Text="OS Image Info:" Margin="5,5,5,5" FontWeight="Bold" Name="osname_text"/>
+					<TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" TextWrapping="Wrap" Text="OS-Info" Margin="5,5,5,5" Name="osinfo_text"/>
+					<Label HorizontalAlignment="Center" VerticalAlignment="Top" Content="Neues Image für die Tasksequenz wählen:" FontWeight="Bold" Margin="0,0,0,0"/>
+					<ListBox HorizontalAlignment="Center" BorderBrush="Black" BorderThickness="1" Height="auto" VerticalAlignment="Top" Width="auto" Margin="5,5,5,5" Name="os_listbox"/>
+					<Label HorizontalAlignment="Center" VerticalAlignment="Top" Content="Neues Image Info:" FontWeight="Bold" Margin="0,0,0,0"/>
+					<TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" TextWrapping="Wrap" Text="OS-Info" Margin="5,5,5,5" Name="osinfo_new_text"/>
+					<Button Content="Image in Tasksequenz ändern und speichern" HorizontalAlignment="Right" VerticalAlignment="Top" Width="auto" Margin="5,5,5,5" Name="save_exit"/>
+				</StackPanel>
+			</Controls:Flyout>
 			<Controls:Flyout Name="FlyOutDomainSettings" Header="Domainsettings" Position="Right" Width="500" Theme="Light" Background="LightGray" Grid.RowSpan="4" IsPinned="False" Opacity="0.93">
 				<Grid>
 					<StackPanel Orientation="Vertical" Margin="0,0,0,0">
@@ -171,11 +186,11 @@
 							<DataGridTextColumn Header="Hostname" Binding="{Binding Hostname}" IsReadOnly="True"/>
 							<DataGridTextColumn Header="Mac" Binding="{Binding ClientID}" IsReadOnly="True"/>
 							<DataGridTextColumn Header="UUID" Binding="{Binding UUID}" IsReadOnly="True"/>
-							<DataGridTextColumn Header="Inv.-Nr." Binding="{Binding Assettag}" IsReadOnly="True"/>
-							<DataGridTextColumn Header="alte Tasksequenz" Binding="{Binding TasksequenceID}" IsReadOnly="True"/>
+							<DataGridTextColumn Header="Inv.-No." Binding="{Binding Assettag}" IsReadOnly="True"/>
+							<DataGridTextColumn Header="old TS" Binding="{Binding TasksequenceID}" IsReadOnly="True"/>
 							<DataGridTextColumn Header="Mainboard" Binding="{Binding Product}" IsReadOnly="True"/>
-							<DataGridTextColumn Header="Marke" Binding="{Binding Make}" IsReadOnly="True"/>
-							<DataGridTextColumn Header="Modell" Binding="{Binding Model}" IsReadOnly="True"/>
+							<DataGridTextColumn Header="Make" Binding="{Binding Make}" IsReadOnly="True"/>
+							<DataGridTextColumn Header="Model" Binding="{Binding Model}" IsReadOnly="True"/>
 							<DataGridTextColumn Header="Drivergroup" Binding="{Binding Drivergroup}" IsReadOnly="True"/>
 						</DataGrid.Columns>
 					</DataGrid>
@@ -264,13 +279,19 @@
 
 						<Border Grid.Row="0" Grid.Column="2" BorderBrush="MediumVioletRed" BorderThickness="1">
 							<StackPanel Name="column3" Orientation="Vertical" HorizontalAlignment="Stretch">
+								<Button DockPanel.Dock="Top" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Width="auto" Margin="5,5,5,5" Name="TSinfoButton" ToolTip="Show what TS settings are, which image gets installed etc.">
+									<StackPanel Orientation="Horizontal">
+										<iconPacks:PackIconMaterial Kind="information"/>
+										<TextBlock Margin="5,0">TS Info</TextBlock>
+									</StackPanel>
+								</Button>
 								<StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
 									<Label HorizontalAlignment="Center" VerticalAlignment="Top" Content="Info Tasksequence:" FontWeight="Bold" Margin="0,0,0,0"/>
-									<ComboBox HorizontalAlignment="Left" BorderBrush="Black" BorderThickness="1" Height="auto" VerticalAlignment="Top" Width="auto" MinWidth="250" Margin="5,5,5,5" Name="ts_combobox"/>
+									<ComboBox HorizontalAlignment="Left" BorderBrush="Black" BorderThickness="1" Height="auto" VerticalAlignment="Top" Width="auto" MinWidth="250" Margin="5,5,5,5" Name="ts_combobox2"/>
 								</StackPanel>
-								<TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" Text="TS-Info" Margin="5,5,5,5" Name="tsinfo_text"/>
-								<TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" Text="OS Image Info:" Margin="5,5,5,5" FontWeight="Bold" Name="osname_text"/>
-								<TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" Text="OS-Info" Margin="5,5,5,5" Name="osinfo_text"/>
+								<TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" Text="TS-Info" Margin="5,5,5,5" Name="tsinfo_text2"/>
+								<TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" Text="OS Image Info:" Margin="5,5,5,5" FontWeight="Bold" Name="osname_text2"/>
+								<TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" Text="OS-Info" Margin="5,5,5,5" Name="osinfo_text2"/>
 							</StackPanel>
 						</Border>
 
