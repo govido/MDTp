@@ -88,3 +88,4 @@ Wishlist:
 - WDS PXE for thin-clients -> making one imageserver for install and thin-clients, making tftp obsolete
 - PC restart option in UI
 - TS without PXE skip (laptops)
+- Make SQL queries faster and in parallel
