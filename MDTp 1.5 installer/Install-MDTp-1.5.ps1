@@ -11,6 +11,7 @@ msiexec /i MSDaRT100.msi /passive
 Copy-Item "D:\MDTp_Tools\Scripts_Win_PE_DART\Unattend_PE_x64.xml" "C:\Program Files\Microsoft Deployment Toolkit\Templates\Unattend_PE_x64.xml"
 
 Register-ScheduledTask -Xml (get-content '.\MDTp_Tools\Scripts_MDTp_Server\MDTp_Servertasks_5Mins.xml' | out-string) -TaskName "MDTp_Servertasks_5Mins" -force
+New-SmbShare -Name "MDTp-Import$" -Path "D:\MDTp-Import" -FullAccess Administrator
 Clear-Host
 write-host "Litetouch and Zerotouch need to be updated with MDTp_Tool for DaRT-Support! (remote Windows PE)"
 $localmdtpassword=Read-Host -Prompt 'Enter local MDTp Administrator password'
