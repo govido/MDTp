@@ -1,9 +1,9 @@
 $domainname = (Get-DnsClient -InterfaceAlias Ethernet*).connectionspecificsuffix
 $dc = (Get-DnsClientServerAddress -InterfaceAlias "Ethernet*" -AddressFamily IPv4).ServerAddresses | select-object -first 1
 
-robocopy .\MDTP_Tools D:\MDTp_Tools /E
+robocopy .\MDTp_Tools D:\MDTp_Tools /E
 robocopy .\MDTp_Tools\Shortcuts "C:\Users\Public\Desktop"
-robocopy .\MDT-Import D:\MDT-Import /E
+robocopy .\MDTp-Import D:\MDTp-Import /E
 robocopy .\DeploymentShare\ D:\DeploymentShare /E
 msiexec /i MSDaRT100.msi /passive
 Copy-Item "D:\MDTp_Tools\Scripts_Win_PE_DART\Unattend_PE_x64.xml" "C:\Program Files\Microsoft Deployment Toolkit\Templates\Unattend_PE_x64.xml"

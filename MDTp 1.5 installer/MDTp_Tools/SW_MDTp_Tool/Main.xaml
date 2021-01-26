@@ -532,13 +532,13 @@
 							<RowDefinition Height="1*" />
 						</Grid.RowDefinitions>
 						<StackPanel Name="Tab2_1" Grid.Row="0" Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Stretch">
-							<Button HorizontalAlignment="Stretch" Margin="5,5,5,5" Name="import_folder" Width="auto" ToolTip="Import-Ordner öffnen, hier werden automatisch DHCP-Exports des DC gespeichert">
+							<Button HorizontalAlignment="Stretch" Margin="5,5,5,5" Name="import_folder" Width="auto" ToolTip="Open import-folder, containing CSV-files, PC-logs and more">
 								<StackPanel Orientation="Horizontal">
 									<iconPacks:PackIconModern Kind="folderpuzzle"/>
-									<TextBlock Margin="5,0">MDT-Import folder</TextBlock>
+									<TextBlock Margin="5,0">MDTp-Import folder</TextBlock>
 								</StackPanel>
 							</Button>
-							<Button HorizontalAlignment="Stretch" Margin="5,5,5,5" Name="csv_edit_button" BorderBrush="#7ed321" Width="auto" ToolTip="CSV-Dateien manuell mit CSV-Buddy bearbeiten (z.B. extra Listen für Räume / Gebäude erstellen)">
+							<Button HorizontalAlignment="Stretch" Margin="5,5,5,5" Name="csv_edit_button" BorderBrush="#7ed321" Width="auto" ToolTip="Edit and save CSV-files with CSV-Buddy">
 								<StackPanel Orientation="Horizontal">
 									<iconPacks:PackIconModern Kind="listhidden"/>
 									<TextBlock Margin="5,0">CSV edit</TextBlock>
@@ -560,9 +560,10 @@
 							<Button HorizontalAlignment="Stretch" Content="MDTp templates with domainconfig import" Width="auto" Margin="5,5,5,5" Name="mdt_template_import_button" ToolTip="Import TS-templates with domainconfig customization (local Password, Windows Key, Domain Join etc.)"/>
 						</StackPanel>
 						<StackPanel Name="Tab2_2" Grid.Row="0" Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Stretch">
-							<Button HorizontalAlignment="Stretch" Content="MDTp Task Sequence löschen" Margin="5,5,5,5" Name="MDTp_TS_delete_button" Width="auto" ToolTip="Tasksequenzen, Images, Treiber etc. löschen. ACHTUNG!!!!!" BorderBrush="#d0021b" Foreground="#d0021b"/>
-							<Button HorizontalAlignment="Stretch" Content="MDTp OS Image löschen" Margin="5,5,5,5" Name="MDTp_OS_delete_button" Width="auto" ToolTip="Tasksequenzen, Images, Treiber etc. löschen. ACHTUNG!!!!!" BorderBrush="#d0021b" Foreground="#d0021b"/>
-							<Button HorizontalAlignment="Stretch" Content="MDTp Treiberordner löschen" Margin="5,5,5,5" Name="MDTp_drivergroup_delete_button" Width="auto" ToolTip="Tasksequenzen, Images, Treiber etc. löschen. ACHTUNG!!!!!" BorderBrush="#d0021b" Foreground="#d0021b"/>
+							<Button HorizontalAlignment="Stretch" Content="MDTp tasksequence delete" Margin="5,5,5,5" Name="MDTp_TS_delete_button" Width="auto" ToolTip="Delete tasksequences, os images or drives permenatly. Attention!!!!!" BorderBrush="#d0021b" Foreground="#d0021b"/>
+							<Button HorizontalAlignment="Stretch" Content="MDTp OS Image delete" Margin="5,5,5,5" Name="MDTp_OS_delete_button" Width="auto" ToolTip="Delete tasksequences, os images or drives permenatly. Attention!!!!!" BorderBrush="#d0021b" Foreground="#d0021b"/>
+							<Button HorizontalAlignment="Stretch" Content="MDTp driver folder delete" Margin="5,5,5,5" Name="MDTp_drivergroup_delete_button" Width="auto" ToolTip="Delete tasksequences, os images or drives permenatly. Attention!!!!!" BorderBrush="#d0021b" Foreground="#d0021b"/>
+							<Button HorizontalAlignment="Stretch" Content="MDTp templates delete" Margin="5,5,5,5" Name="MDTp_template_delete_button" Width="auto" ToolTip="Delete tasksequences, os images or drives permenatly. Attention!!!!!" BorderBrush="#d0021b" Foreground="#d0021b"/>
 						</StackPanel>
 						<StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
 							<Button Name="Close" Width="45" Height="45" ToolTip="Exit" Style="{DynamicResource MahApps.Metro.Styles.MetroCircleButtonStyle}">
@@ -573,7 +574,7 @@
 					</Grid>
 				</TabItem>
 			</TabControl>
-			<dialogs:DialogContainer Background="Red" Name="Test"/>
+			<dialogs:DialogContainer Background="Red" Name="Warning"/>
 
 		</Grid>
 
