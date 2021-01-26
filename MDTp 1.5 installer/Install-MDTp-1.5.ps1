@@ -12,7 +12,7 @@ Copy-Item "D:\MDTp_Tools\Scripts_Win_PE_DART\Unattend_PE_x64.xml" "C:\Program Fi
 
 Register-ScheduledTask -Xml (get-content '.\MDTp_Tools\Scripts_MDTp_Server\MDTp_Servertasks_5Mins.xml' | out-string) -TaskName "MDTp_Servertasks_5Mins" -force
 Clear-Host
-write-host "Litetouch and Zerotouch need to be updated with MDTp_Tool for DART-Support! (remote Windows PE)"
+write-host "Litetouch and Zerotouch need to be updated with MDTp_Tool for DaRT-Support! (remote Windows PE)"
 $localmdtpassword=Read-Host -Prompt 'Enter local MDTp Administrator password'
 (Get-Content "D:\DeploymentShare\Control\Bootstrap_Zerotouch.ini") | ForEach-Object { $_ -replace "YOURlocalMDTpADMINpassword",$localmdtpassword -replace "mdtp",$env:computername} | Set-Content "D:\DeploymentShare\Control\Bootstrap_Zerotouch.ini"
 $SQLuser=Read-Host -Prompt 'Enter SQL username (admin)'

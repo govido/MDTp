@@ -2553,7 +2553,8 @@ $DomainName = (Get-ADDomain).DNSRoot
 $DomainReplace = ".$DomainName"
 $today = Get-Date -Format yyyy_MM_dd
 
-net use \\mdtp\MDTp-Import$ /user:mdtp\dhcp Import-2020 /persistent:no
+$credential = Get-Credential -Credential mdtp\administrator
+New-PSDrive -Name P -PSProvider FileSystem -Root "\\mdtp\mdtp-import$" -Credential $credential
 
 $status.Text = "Exporting $domainname with DHCP-Scope $DHCPscope to MDTp"
 [System.Windows.Forms.Application]::DoEvents()
