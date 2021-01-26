@@ -9,3 +9,4 @@ mkdir \\$dc\c$\MDTp_DC_Tools
 robocopy D:\MDTp_Tools\SW_MDTp_DC_Tools \\$dc\c$\MDTp_DC_Tools
 copy-item "D:\MDTp_Tools\SW_MDTp_DC_Tools\MDTp_DC_Tools.lnk" "\\$dc\c$\Users\Public\Desktop\MDTp_DC_Tools.lnk"
 write-output "MDTp_Tools have been copied to the DC, run MDT-DC from the desktop shortcut"
+pause
