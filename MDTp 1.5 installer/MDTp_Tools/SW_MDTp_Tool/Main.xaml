@@ -77,11 +77,11 @@
 					<TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" TextWrapping="Wrap" Text="TS-Info" Margin="5,5,5,5" Name="tsinfo_text"/>
 					<TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" TextWrapping="Wrap" Text="OS Image Info:" Margin="5,5,5,5" FontWeight="Bold" Name="osname_text"/>
 					<TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" TextWrapping="Wrap" Text="OS-Info" Margin="5,5,5,5" Name="osinfo_text"/>
-					<Label HorizontalAlignment="Center" VerticalAlignment="Top" Content="Neues Image für die Tasksequenz wählen:" FontWeight="Bold" Margin="0,0,0,0"/>
-					<ListBox HorizontalAlignment="Center" BorderBrush="Black" BorderThickness="1" Height="auto" VerticalAlignment="Top" Width="auto" Margin="5,5,5,5" Name="os_listbox"/>
-					<Label HorizontalAlignment="Center" VerticalAlignment="Top" Content="Neues Image Info:" FontWeight="Bold" Margin="0,0,0,0"/>
+					<CheckBox HorizontalAlignment="Center" VerticalAlignment="Top" Content="Check to change install image:" Margin="5,5,5,5" Name="os_change_checkbox" FontWeight="Bold" ToolTip="Check to change TS image"/>
+					<ListBox IsEnabled="False" HorizontalAlignment="Center" BorderBrush="Black" BorderThickness="1" Height="auto" VerticalAlignment="Top" Width="auto" Margin="5,5,5,5" Name="os_listbox"/>
+					<Label HorizontalAlignment="Center" VerticalAlignment="Top" Content="New image info:" FontWeight="Bold" Margin="0,0,0,0"/>
 					<TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" TextWrapping="Wrap" Text="OS-Info" Margin="5,5,5,5" Name="osinfo_new_text"/>
-					<Button Content="Image in Tasksequenz ändern und speichern" HorizontalAlignment="Right" VerticalAlignment="Top" Width="auto" Margin="5,5,5,5" Name="save_exit"/>
+					<Button IsEnabled="False" Content="Set different image to tasksequnce and save" HorizontalAlignment="Center" VerticalAlignment="Top" Width="auto" Margin="5,5,5,5" Name="save_os_change_exit_button" ToolTip="Change OS image in tasksequnce, useful after image updates"/>
 				</StackPanel>
 			</Controls:Flyout>
 			<Controls:Flyout Name="FlyOutDomainSettings" Header="Domainsettings" Position="Right" Width="500" Theme="Light" Background="LightGray" Grid.RowSpan="4" IsPinned="False" Opacity="0.93">
@@ -179,8 +179,8 @@
 						<TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" Text="OS Image Info:" Margin="5,5,5,5" FontWeight="Bold" Name="osname_db_text"/>
 						<TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" Text="OS-Info" Margin="5,5,5,5" Name="osinfo_db_text"/>
 					</StackPanel>
-					<Button Content="Import in DB" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="120" Margin="5,5,5,5" Name="import_csv_button"/>
-					<Button Content="Aus Datenbank löschen" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="150" Margin="5,5,5,5" Name="delete_csv_button"/>
+					<Button Content="Import to database" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="120" Margin="5,5,5,5" Name="import_csv_button" ToolTip="Import all PCs with shown settings, exisisting entries will be updated"/>
+					<Button Content="delete from database" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="150" Margin="5,5,5,5" Name="delete_csv_button" ToolTip="delete PCs permanently from database, use with caution"/>
 					<DataGrid HorizontalAlignment="Left" Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Top" Width="auto" Height="auto" Margin="10,5,5,5" AlternatingRowBackground="LightBlue" Name="pcs_datagrid">
 						<DataGrid.Columns>
 							<DataGridTextColumn Header="Hostname" Binding="{Binding Hostname}" IsReadOnly="True"/>
@@ -279,10 +279,12 @@
 
 						<Border Grid.Row="0" Grid.Column="2" BorderBrush="MediumVioletRed" BorderThickness="1">
 							<StackPanel Name="column3" Orientation="Vertical" HorizontalAlignment="Stretch">
-								<Button DockPanel.Dock="Top" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Width="auto" Margin="5,5,5,5" Name="TSinfoButton" ToolTip="Show what TS settings are, which image gets installed etc.">
+								<Button DockPanel.Dock="Top" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Width="auto" Margin="5,5,5,5" Name="TSinfoButton" ToolTip="Show TS info, change OS images">
 									<StackPanel Orientation="Horizontal">
 										<iconPacks:PackIconMaterial Kind="information"/>
-										<TextBlock Margin="5,0">TS Info</TextBlock>
+										<TextBlock Margin="5,0">TS Info / OS image change</TextBlock>
+										<iconPacks:PackIconModern Kind="swap"/>
+										<iconPacks:PackIconModern Kind="cd"/>
 									</StackPanel>
 								</Button>
 								<StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
@@ -501,13 +503,6 @@
 								<StackPanel Orientation="Horizontal">
 									<iconPacks:PackIconModern Kind="pageadd"/>
 									<TextBlock Margin="5,0">Add new tasksequence</TextBlock>
-								</StackPanel>
-							</Button>
-							<Button DockPanel.Dock="Top" HorizontalAlignment="Stretch" Width="auto" Margin="5,5,5,5" Name="TS_OS_change_button" ToolTip="Change OS-Image in existing TS (useful for Updates for specific rooms)">
-								<StackPanel Orientation="Horizontal">
-									<iconPacks:PackIconModern Kind="swap"/>
-									<TextBlock Margin="5,0">Tasksequece OS change</TextBlock>
-									<iconPacks:PackIconModern Kind="cd"/>
 								</StackPanel>
 							</Button>
 							<Button DockPanel.Dock="Top" HorizontalAlignment="Stretch" Width="auto" Margin="5,5,5,5" Name="driver_import_button" ToolTip="Import driver folders">
