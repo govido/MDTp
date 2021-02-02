@@ -27,7 +27,7 @@
 				<ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
 				<ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
 				<ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Colors.xaml" />
-				<ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/Violet.xaml" />
+				<ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/Indigo.xaml" />
 				<ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseLight.xaml"/>
 				<ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.AnimatedTabControl.xaml" />
 				<ResourceDictionary Source="pack://application:,,,/SimpleDialogs;component/Themes/Light.xaml" />
@@ -195,7 +195,7 @@
 							<RadioButton HorizontalAlignment="Left" VerticalAlignment="Top" Content="PXE inactive (NO INSTALL)" Margin="5,5,5,5" Name="pxe_off_radiobutton" FontWeight="Bold" ToolTip="MACs will be added to WDS, PXE will be skipped (aka install not active)"/>
 						</StackPanel>
 						<CheckBox HorizontalAlignment="Left" VerticalAlignment="Top" Content="Start PCs with WoL" Margin="5,5,5,5" Name="wol_checkbox" FontWeight="Bold" ToolTip="Start all PCs after successfull database import, UEFI PXE primary boot needed for automatic install"/>
-						<CheckBox HorizontalAlignment="Left" VerticalAlignment="Top" Content="*WIP* PCs restart powered on domain PCs" Margin="5,5,5,5" Name="restart_checkbox"/>
+						<CheckBox HorizontalAlignment="Left" VerticalAlignment="Top" Content="Restart powered on domain PCs (prompt for PW)" Margin="5,5,5,5" FontWeight="Bold" Name="restart_checkbox"/>
 						<CheckBox HorizontalAlignment="Left" VerticalAlignment="Top" Content="Save current PC-list to CSV" Margin="5,5,5,5" Name="save_csv_checkbox" ToolTip="Save current filtered view to new CSV-file (special-PC lists, room-lists etc.)"/>
 						<Label HorizontalAlignment="Left" VerticalAlignment="Top" Content="test" Margin="5,5,5,5" Name="savepath_label"/>
 						<TextBox Visibility="Hidden" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="300" TextWrapping="Wrap" Margin="5,5,5,5" Name="save_csv_text"/>
