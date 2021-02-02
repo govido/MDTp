@@ -3,6 +3,9 @@ $dc = (Get-DnsClientServerAddress -InterfaceAlias "Ethernet*" -AddressFamily IPv
 
 Write-Host "Before continuing copy ---MSDaRT100.msi--- in the same folder as this installscript for DaRT remote support"
 pause
+mkdir D:\MDTp-Import\Drivers
+mkdir D:\MDTp-Import\PC-Infos
+mkdir D:\MDTp-Import\PC-Reports
 robocopy .\MDTp_Tools D:\MDTp_Tools /E
 robocopy .\MDTp_Tools\Shortcuts "C:\Users\Public\Desktop"
 robocopy .\MDTp-Import D:\MDTp-Import /E
