@@ -82,6 +82,15 @@
 					<Label HorizontalAlignment="Center" VerticalAlignment="Top" Content="New image info:" FontWeight="Bold" Margin="0,0,0,0"/>
 					<TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" TextWrapping="Wrap" Text="OS-Info" Margin="5,5,5,5" Name="osinfo_new_text"/>
 					<DataGrid HorizontalAlignment="Left" Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Top" Width="auto" Height="auto" Margin="10,5,5,5" AlternatingRowBackground="WhiteSmoke" Name="ts_variables_datagrid">
+						<DataGrid.CellStyle>
+							<Style TargetType="DataGridCell">
+								<Style.Triggers>
+									<Trigger Property="IsSelected" Value="True">
+										<Setter Property="Background" Value="LightBlue"/>
+									</Trigger>
+								</Style.Triggers>
+							</Style>
+						</DataGrid.CellStyle>
 						<DataGrid.Columns>
 							<DataGridTextColumn Header="Variablestep" Binding="{Binding Variablestep}" IsReadOnly="True"/>
 							<DataGridTextColumn Header="Variablename" Binding="{Binding Variablename}" IsReadOnly="True"/>
@@ -91,7 +100,7 @@
 					<Button IsEnabled="False" Content="Set different image to tasksequnce and save" HorizontalAlignment="Center" VerticalAlignment="Top" Width="auto" Margin="5,5,5,5" Name="save_os_change_exit_button" ToolTip="Change OS image in tasksequnce, useful after image updates"/>
 				</StackPanel>
 			</Controls:Flyout>
-			<Controls:Flyout Name="FlyoutNewTS" Header="New tasksequence" Position="Right" Width="450" Theme="Light" Background="LightBlue" AreAnimationsEnabled="True" AnimateOpacity="True">
+			<Controls:Flyout Name="FlyoutNewTS" Header="New tasksequence" Position="Right" Width="auto" Theme="Light" Background="LightBlue" AreAnimationsEnabled="True" AnimateOpacity="True">
 				<StackPanel Orientation="Vertical" HorizontalAlignment="Stretch">
 					<Label HorizontalAlignment="Left" VerticalAlignment="Top" Content="Template-Name:" Margin="5,5,5,5"/>
 					<StackPanel Orientation="Vertical" HorizontalAlignment="Stretch">
@@ -396,7 +405,7 @@
 													<Setter Property="Background" Value="Plum"></Setter>
 												</DataTrigger>
 												<DataTrigger Binding="{Binding PXE-Boot}" Value="PXE_SKIP">
-													<Setter Property="Background" Value="Aquamarine"></Setter>
+													<Setter Property="Background" Value="LightGreen"></Setter>
 												</DataTrigger>
 											</Style.Triggers>
 										</Style>
@@ -405,7 +414,7 @@
 										<Style TargetType="DataGridCell">
 											<Style.Triggers>
 												<Trigger Property="IsSelected" Value="True">
-													<Setter Property="Background" Value="Turquoise"/>
+													<Setter Property="Background" Value="LightBlue"/>
 												</Trigger>
 											</Style.Triggers>
 										</Style>
