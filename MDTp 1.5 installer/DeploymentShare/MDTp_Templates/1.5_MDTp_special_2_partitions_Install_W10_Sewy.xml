@@ -10,7 +10,7 @@
     <variable name="DestinationOSInstallType" property="DestinationOSInstallType">ByVariable</variable>
     <variable name="OSGUID" property="OSGUID">{258714ba-57bd-4a7b-bf56-c387e7c213fb}</variable>
   </globalVarList>
-  <group expand="true" name="SIT_Set_Variables_Domain_Join" description="" disable="false" continueOnError="false">
+  <group expand="true" name="MDTp_Set_Custom_Variables" description="" disable="false" continueOnError="false">
     <action />
     <step type="SMS_TaskSequence_SetVariableAction" name="JoinDomain" description="" disable="false" continueOnError="false" successCodeList="0 3010">
       <defaultVarList>
@@ -29,7 +29,7 @@
     <step type="SMS_TaskSequence_SetVariableAction" name="DomainAdminDomain" description="" disable="false" continueOnError="false" successCodeList="0 3010">
       <defaultVarList>
         <variable name="VariableName" property="VariableName">DomainAdminDomain</variable>
-        <variable name="VariableValue" property="VariableValue">muster.domain</variable>
+        <variable name="VariableValue" property="VariableValue">demo.domain</variable>
       </defaultVarList>
       <action>cscript.exe "%SCRIPTROOT%\ZTISetVariable.wsf"</action>
     </step>
@@ -111,7 +111,7 @@
     </step>
     <step type="BDD_RunPowerShellAction" name="TS_Install_SQL_Import_Update" description="" disable="false" continueOnError="false" successCodeList="0 3010">
       <defaultVarList>
-        <variable name="ScriptName" property="ScriptName">MDTp\SIT_SQL_Import_Update.ps1</variable>
+        <variable name="ScriptName" property="ScriptName">MDTp\TS_Install_SQL_Import_Update.ps1</variable>
         <variable name="Parameters" property="Parameters"></variable>
         <variable name="PackageID" property="PackageID"></variable>
       </defaultVarList>

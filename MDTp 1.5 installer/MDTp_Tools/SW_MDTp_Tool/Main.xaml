@@ -69,7 +69,7 @@
 					<ComboBox Name="MAccent" Margin="0 8 0 8" Width="Auto" SelectedIndex="1" Background="#A2717171"/>
 				</StackPanel>
 			</Controls:Flyout>
-			<Controls:Flyout Name="FlyoutTSinfo" Header="TS Info / OS Change" Position="Right" Width="450" Theme="Light" Background="Orange" AreAnimationsEnabled="True" AnimateOpacity="True">
+			<Controls:Flyout Name="FlyoutTSinfo" Header="TS Info / OS Change" Position="Right" Width="650" Theme="Light" Background="Orange" AreAnimationsEnabled="True" AnimateOpacity="True">
 				<StackPanel Orientation="Vertical" HorizontalAlignment="Stretch">
 					<Label HorizontalAlignment="Center" VerticalAlignment="Top" Content="Select existing tasksequence:" FontWeight="Bold" Margin="0,0,0,0"/>
 					<ComboBox HorizontalAlignment="Center" BorderBrush="Black" BorderThickness="1" Height="auto" VerticalAlignment="Top" Width="auto" MinWidth="250" Margin="5,5,5,5" Name="ts_combobox"/>
@@ -81,7 +81,34 @@
 					<ListBox IsEnabled="False" HorizontalAlignment="Center" BorderBrush="Black" BorderThickness="1" Height="auto" VerticalAlignment="Top" Width="auto" Margin="5,5,5,5" Name="os_listbox"/>
 					<Label HorizontalAlignment="Center" VerticalAlignment="Top" Content="New image info:" FontWeight="Bold" Margin="0,0,0,0"/>
 					<TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" TextWrapping="Wrap" Text="OS-Info" Margin="5,5,5,5" Name="osinfo_new_text"/>
+					<DataGrid HorizontalAlignment="Left" Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Top" Width="auto" Height="auto" Margin="10,5,5,5" AlternatingRowBackground="WhiteSmoke" Name="ts_variables_datagrid">
+						<DataGrid.Columns>
+							<DataGridTextColumn Header="Variablestep" Binding="{Binding Variablestep}" IsReadOnly="True"/>
+							<DataGridTextColumn Header="Variablename" Binding="{Binding Variablename}" IsReadOnly="True"/>
+							<DataGridTextColumn Header="VariableValue" Binding="{Binding VariableValue}" IsReadOnly="True"/>
+						</DataGrid.Columns>
+					</DataGrid>
 					<Button IsEnabled="False" Content="Set different image to tasksequnce and save" HorizontalAlignment="Center" VerticalAlignment="Top" Width="auto" Margin="5,5,5,5" Name="save_os_change_exit_button" ToolTip="Change OS image in tasksequnce, useful after image updates"/>
+				</StackPanel>
+			</Controls:Flyout>
+			<Controls:Flyout Name="FlyoutNewTS" Header="New tasksequence" Position="Right" Width="450" Theme="Light" Background="LightBlue" AreAnimationsEnabled="True" AnimateOpacity="True">
+				<StackPanel Orientation="Vertical" HorizontalAlignment="Stretch">
+					<Label HorizontalAlignment="Left" VerticalAlignment="Top" Content="Template-Name:" Margin="5,5,5,5"/>
+					<StackPanel Orientation="Vertical" HorizontalAlignment="Stretch">
+						<StackPanel Name="horizontal" Orientation="horizontal" HorizontalAlignment="Stretch">
+							<TextBox HorizontalAlignment="Left" VerticalAlignment="Top" Height="20" Width="auto" TextWrapping="Wrap" Margin="5,5,5,5" Name="template_text"/>
+							<Button Content="Template" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="5,5,5,5" Name="template_button"/>
+						</StackPanel>
+						<Label HorizontalAlignment="Left" VerticalAlignment="Top" Content="Image-Name:" Margin="5,5,5,5"/>
+						<ListBox HorizontalAlignment="Left" BorderBrush="Black" BorderThickness="1" Height="auto" VerticalAlignment="Top" Width="auto" Margin="5,5,5,5" Name="os_listbox3"/>
+						<Label HorizontalAlignment="Left" VerticalAlignment="Top" Content="OS-Info:" Margin="5,5,5,5"/>
+						<TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" Text="OS-Info" Margin="5,5,5,5" Name="osinfo_text3"/>
+						<Label HorizontalAlignment="Left" VerticalAlignment="Top" Content="TS name:" Margin="5,5,5,5"/>
+						<TextBox HorizontalAlignment="Left" VerticalAlignment="Top" Height="20" Width="80" TextWrapping="Wrap" Margin="5,5,5,5" Name="tssequence_text3"/>
+						<Label HorizontalAlignment="Left" VerticalAlignment="Top" Content="Description" Margin="5,5,5,5"/>
+						<TextBox HorizontalAlignment="Left" VerticalAlignment="Top" Height="auto" Width="auto" TextWrapping="Wrap" Margin="5,5,5,5" Name="comments_text3"/>
+						<Button Content="Create" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="75" Margin="5,5,5,5" Name="create_ts_button"/>
+					</StackPanel>
 				</StackPanel>
 			</Controls:Flyout>
 			<Controls:Flyout Name="FlyOutDomainSettings" Header="Domainsettings" Position="Right" Width="500" Theme="Light" Background="LightGray" Grid.RowSpan="4" IsPinned="False" Opacity="0.93">
@@ -360,10 +387,10 @@
 										<Style TargetType="DataGridRow">
 											<Style.Triggers>
 												<DataTrigger Binding="{Binding PXE-Boot}" Value="PXE_INSTALL">
-													<Setter Property="Background" Value="violet"></Setter>
+													<Setter Property="Background" Value="Plum"></Setter>
 												</DataTrigger>
 												<DataTrigger Binding="{Binding PXE-Boot}" Value="PXE_SKIP">
-													<Setter Property="Background" Value="lightgreen"></Setter>
+													<Setter Property="Background" Value="Aquamarine"></Setter>
 												</DataTrigger>
 											</Style.Triggers>
 										</Style>
