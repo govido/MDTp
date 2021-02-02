@@ -152,7 +152,7 @@
 
 						<Label HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Content="Browser homepage" Margin="0,0,0,0" ToolTip="Set Internet Explorer default page"/>
 						<TextBox HorizontalAlignment="Left" VerticalAlignment="Top" Height="20" Width="210" TextWrapping="Wrap" Margin="5,0,0,0" Name="oshomepage_text"/>
-
+						<Label HorizontalAlignment="Center" VerticalAlignment="Top" Content="Import new TS-Templates after MDTp update or domainconfig changes:" Margin="0,0,0,0"/>
 						<Button HorizontalAlignment="Center" Width="auto" Margin="0,20,0,0" Name="save_domain_mdt_template_import_button" ToolTip="Import TS-templates with domainconfig customization (local Password, Windows Key, Domain Join etc.)">
 							<StackPanel Orientation="Horizontal">
 								<iconPacks:PackIconMaterial Kind="floppy"/>
@@ -181,7 +181,7 @@
 						<RowDefinition Height="2*" />
 					</Grid.RowDefinitions>
 					<StackPanel Name="import_options" Grid.Row="0" Grid.Column="0" Orientation="Vertical" HorizontalAlignment="Stretch" Margin="5,5,5,5">
-						<Label HorizontalAlignment="Left" VerticalAlignment="Top" Content="Tasksequece (new/change):" Margin="5,5,5,5" ToolTip="Select Tasksequence to install for all selected PCs, if nothing is selected TS from datatable is used"/>
+						<Label HorizontalAlignment="Left" VerticalAlignment="Top" Content="Tasksequence (new/change):" Margin="5,5,5,5" ToolTip="Select Tasksequence to install for all selected PCs, if nothing is selected TS from datatable is used"/>
 						<ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="240" Margin="5,5,5,5" Name="ts_db_combobox"/>
 						<Label HorizontalAlignment="Left" VerticalAlignment="Top" Content="Custom drivers (NONE for automatic mainboard detection):" Margin="5,5,5,5" ToolTip="Select driver folder if some PCs use special driver packs (eg. GPU, special PCI-E Cards)"/>
 						<ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="240" Margin="5,5,5,5" Name="drivergroup_combobox"/>
@@ -271,6 +271,12 @@
 									<StackPanel Orientation="Horizontal">
 										<iconPacks:PackIconMaterial Kind="database"/>
 										<TextBlock Margin="5,0">PCs import / delete / change</TextBlock>
+									</StackPanel>
+								</Button>
+								<Button Controls:ControlsHelper.ContentCharacterCasing="Normal" HorizontalAlignment="Stretch" Margin="5,5,5,5" Name="import_logs_button" Width="auto" ToolTip="Open import/delete-log folder" BorderBrush="Black">
+									<StackPanel Orientation="Horizontal">
+										<iconPacks:PackIconMaterial Kind="import"/>
+										<TextBlock Margin="5,0">Open import / delete logs</TextBlock>
 									</StackPanel>
 								</Button>
 							</StackPanel>
@@ -419,7 +425,7 @@
 										<DataGridTextColumn Header="DB: Hostname" Binding="{Binding Hostname}" IsReadOnly="True"/>
 										<DataGridTextColumn Header="DB: Mac" Binding="{Binding ClientID}" IsReadOnly="True"/>
 										<DataGridTextColumn Header="DB: Inv.-No." Binding="{Binding Assettag}" IsReadOnly="True"/>
-										<DataGridTextColumn Header="DB: Tasksequece" Binding="{Binding TasksequenceID}" IsReadOnly="True"/>
+										<DataGridTextColumn Header="DB: Tasksequence" Binding="{Binding TasksequenceID}" IsReadOnly="True"/>
 										<DataGridTextColumn Header="DB: Drivergroup" Binding="{Binding Drivergroup}" IsReadOnly="True"/>
 										<DataGridTextColumn Header="WDS: PXE-Boot" Binding="{Binding PXE-Boot}" IsReadOnly="True"/>
 										<DataGridTextColumn Header="WDS: Bootimage" Binding="{Binding Bootimage}" IsReadOnly="True"/>
@@ -579,8 +585,6 @@
 									<TextBlock Margin="5,0">Open PC-report</TextBlock>
 								</StackPanel>
 							</Button>
-							<Label HorizontalAlignment="Center" VerticalAlignment="Top" Content="Import new TS-Templates after MDTp update or domainconfig changes:" Margin="0,0,0,0"/>
-							<Button HorizontalAlignment="Stretch" Content="MDTp templates with domainconfig import" Width="auto" Margin="5,5,5,5" Name="mdt_template_import_button" ToolTip="Import TS-templates with domainconfig customization (local Password, Windows Key, Domain Join etc.)"/>
 						</StackPanel>
 						<StackPanel Name="Tab2_2" Grid.Row="0" Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Stretch">
 							<Button HorizontalAlignment="Stretch" Content="MDTp tasksequence delete" Margin="5,5,5,5" Name="MDTp_TS_delete_button" Width="auto" ToolTip="Delete tasksequences, os images or drives permenatly. Attention!!!!!" BorderBrush="#d0021b" Foreground="#d0021b"/>
