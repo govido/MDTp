@@ -260,14 +260,14 @@
 						<Border Grid.Row="0" Grid.Column="0" BorderBrush="#1A00FF0B" Background="#1A00FF0B" BorderThickness="1">
 							<StackPanel Name="column2" Grid.Row="0" Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Stretch">
 								<Label HorizontalAlignment="Center" VerticalAlignment="Top" Content="Database Import:" FontWeight="Bold" FontSize="14" Margin="0,0,0,0"/>
-								<Button Controls:ControlsHelper.ContentCharacterCasing="Normal" HorizontalAlignment="Stretch" Margin="5,5,5,5" Name="dc_rdp_button" Width="auto" ToolTip="RDP-Session to the DC to create DHCP Export with MDTp-DC-Tool (use already existing PC-Names and MACs)" BorderBrush="limegreen">
+								<Button Controls:ControlsHelper.ContentCharacterCasing="Normal" HorizontalAlignment="Stretch" Margin="5,5,5,5" Name="dc_rdp_button" Width="auto" ToolTip="RDP-Session to the DC to create DHCP Export with MDTp-DC-Tool (use already existing PC-Names and MACs)" BorderBrush="LightGreen">
 									<StackPanel Orientation="Horizontal">
 										<iconPacks:PackIconMaterial Kind="export"/>
 										<TextBlock Margin="5,0">New DHCP-Export (RDP DC)</TextBlock>
 										<iconPacks:PackIconMaterial Kind="servernetwork"/>
 									</StackPanel>
 								</Button>
-								<Button HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5,5,5,5" Name="db_tools_button" Background="limegreen" BorderBrush="magenta" Foreground="Black" FontWeight="Bold" Width="auto" ToolTip="Import CSV-files for PCs, delete, assign / change tasksequences and more">
+								<Button HorizontalAlignment="Stretch" VerticalAlignment="Center" Margin="5,5,5,5" Name="db_tools_button" Background="LightGreen" BorderBrush="DarkSlateBlue" Foreground="Black" FontWeight="Bold" Width="auto" ToolTip="Import CSV-files for PCs, delete, assign / change tasksequences and more">
 									<StackPanel Orientation="Horizontal">
 										<iconPacks:PackIconMaterial Kind="database"/>
 										<TextBlock Margin="5,0">PCs import / delete / change</TextBlock>
@@ -324,7 +324,7 @@
 							</StackPanel>
 						</Border>
 
-						<Border Grid.RowSpan="3" Grid.Column="3" BorderBrush="MediumVioletRed" Background="#1AB700FF" BorderThickness="1">
+						<Border Grid.RowSpan="3" Grid.Column="3" BorderBrush="MediumVioletRed" Background="LightBlue" BorderThickness="1">
 							<DockPanel Grid.RowSpan="3" Grid.Column="3" HorizontalAlignment="Stretch" VerticalAlignment="Top">
 								<Label DockPanel.Dock="Top" HorizontalAlignment="Center" VerticalAlignment="Top" Content="Staggered Deploy:" FontWeight="Bold" FontSize="14" Margin="0,0,0,0" ToolTip="Imageinstallation will be started manually (to distribute network load, give all PCs enough bandwidth to load Litetouch first)"/>
 								<CheckBox DockPanel.Dock="Top" HorizontalAlignment="Stretch" Content="Manual start active" Margin="5,5,5,5" Name="staggered_deploy_checkbox" ToolTip="if not checked all pending installs will be started automatically after 5 minutes (planned task)"/>
@@ -420,6 +420,7 @@
 										<DataGridTextColumn Header="DB: Mac" Binding="{Binding ClientID}" IsReadOnly="True"/>
 										<DataGridTextColumn Header="DB: Inv.-No." Binding="{Binding Assettag}" IsReadOnly="True"/>
 										<DataGridTextColumn Header="DB: Tasksequece" Binding="{Binding TasksequenceID}" IsReadOnly="True"/>
+										<DataGridTextColumn Header="DB: Drivergroup" Binding="{Binding Drivergroup}" IsReadOnly="True"/>
 										<DataGridTextColumn Header="WDS: PXE-Boot" Binding="{Binding PXE-Boot}" IsReadOnly="True"/>
 										<DataGridTextColumn Header="WDS: Bootimage" Binding="{Binding Bootimage}" IsReadOnly="True"/>
 										<DataGridTextColumn Header="Log: Image" Binding="{Binding Wim_File}" IsReadOnly="True"/>
@@ -587,20 +588,12 @@
 							<Button HorizontalAlignment="Stretch" Content="MDTp driver folder delete" Margin="5,5,5,5" Name="MDTp_drivergroup_delete_button" Width="auto" ToolTip="Delete tasksequences, os images or drives permenatly. Attention!!!!!" BorderBrush="#d0021b" Foreground="#d0021b"/>
 							<Button HorizontalAlignment="Stretch" Content="MDTp templates delete" Margin="5,5,5,5" Name="MDTp_template_delete_button" Width="auto" ToolTip="Delete tasksequences, os images or drives permenatly. Attention!!!!!" BorderBrush="#d0021b" Foreground="#d0021b"/>
 						</StackPanel>
-						<StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-							<Button Name="Close" Width="45" Height="45" ToolTip="Exit" Style="{DynamicResource MahApps.Metro.Styles.MetroCircleButtonStyle}">
-         					Exit
-							</Button>
-						</StackPanel>
-
 					</Grid>
 				</TabItem>
 			</TabControl>
 			<dialogs:DialogContainer Background="Red" Name="Warning"/>
 
 		</Grid>
-
-
 
 	</Grid>
 
