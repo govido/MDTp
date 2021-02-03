@@ -194,7 +194,7 @@
 						<ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="240" Margin="5,5,5,5" Name="ts_db_combobox"/>
 						<Label HorizontalAlignment="Left" VerticalAlignment="Top" Content="Custom drivers (NONE for automatic mainboard detection):" Margin="5,5,5,5" ToolTip="Select driver folder if some PCs use special driver packs (eg. GPU, special PCI-E Cards)"/>
 						<ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="240" Margin="5,5,5,5" Name="drivergroup_combobox"/>
-						<Label HorizontalAlignment="Left" VerticalAlignment="Top" Content="PC domainjoin OU:" Margin="5,5,5,5" ToolTip="This OU MUST exist in AD, existing AD-PCs OU won't be affected"/>
+						<Label HorizontalAlignment="Left" VerticalAlignment="Top" Content="PC domainjoin OU: (deprecated, TS is used for more flexibilty)" Margin="5,5,5,5" ToolTip="This OU MUST exist in AD, existing AD-PCs OU won't be affected"/>
 						<TextBox HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="390" TextWrapping="Wrap" Margin="5,5,5,5" Name="pc_ou_db_text"/>
 					</StackPanel>
 					<StackPanel Name="buttons" Grid.Row="0" Grid.Column="2" Orientation="Vertical" HorizontalAlignment="Stretch" Margin="5,5,5,5">

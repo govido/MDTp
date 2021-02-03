@@ -36,14 +36,14 @@
     <step type="SMS_TaskSequence_SetVariableAction" name="DomainAdminPassword" description="" disable="false" continueOnError="false" successCodeList="0 3010">
       <defaultVarList>
         <variable name="VariableName" property="VariableName">DomainAdminPassword</variable>
-        <variable name="VariableValue" property="VariableValue"></variable>
+        <variable name="VariableValue" property="VariableValue">SecretPassword</variable>
       </defaultVarList>
       <action>cscript.exe "%SCRIPTROOT%\ZTISetVariable.wsf"</action>
     </step>
     <step type="SMS_TaskSequence_SetVariableAction" name="AdminPassword_local" description="" disable="false" continueOnError="false" successCodeList="0 3010">
       <defaultVarList>
         <variable name="VariableName" property="VariableName">AdminPassword</variable>
-        <variable name="VariableValue" property="VariableValue"></variable>
+        <variable name="VariableValue" property="VariableValue">SecretPassword</variable>
       </defaultVarList>
       <action>cscript.exe "%SCRIPTROOT%\ZTISetVariable.wsf"</action>
     </step>
@@ -71,7 +71,7 @@
     <step type="SMS_TaskSequence_SetVariableAction" name="ProductKey" description="Windows_10_Key" disable="false" continueOnError="false" successCodeList="0 3010">
       <defaultVarList>
         <variable name="VariableName" property="VariableName">ProductKey</variable>
-        <variable name="VariableValue" property="VariableValue"></variable>
+        <variable name="VariableValue" property="VariableValue">YOURwindowsKEY</variable>
       </defaultVarList>
       <action>cscript.exe "%SCRIPTROOT%\ZTISetVariable.wsf"</action>
     </step>

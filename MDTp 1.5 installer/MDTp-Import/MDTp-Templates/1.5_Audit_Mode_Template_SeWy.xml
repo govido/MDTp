@@ -10,13 +10,16 @@
     <variable name="DestinationOSInstallType" property="DestinationOSInstallType">ByVariable</variable>
     <variable name="OSGUID" property="OSGUID">{258714ba-57bd-4a7b-bf56-c387e7c213fb}</variable>
   </globalVarList>
-  <step type="SMS_TaskSequence_SetVariableAction" name="AdminPassword_local" description="" disable="false" continueOnError="false" successCodeList="0 3010">
-    <defaultVarList>
-      <variable name="VariableName" property="VariableName">AdminPassword</variable>
-      <variable name="VariableValue" property="VariableValue">PASSW0RD</variable>
-    </defaultVarList>
-    <action>cscript.exe "%SCRIPTROOT%\ZTISetVariable.wsf"</action>
-  </step>
+  <group expand="true" name="MDTp_Set_Custom_Variables" description="" disable="false" continueOnError="false">
+    <action />
+    <step type="SMS_TaskSequence_SetVariableAction" name="AdminPassword_local" description="" disable="false" continueOnError="false" successCodeList="0 3010">
+      <defaultVarList>
+        <variable name="VariableName" property="VariableName">AdminPassword</variable>
+        <variable name="VariableValue" property="VariableValue">PASSW0RD</variable>
+      </defaultVarList>
+      <action>cscript.exe "%SCRIPTROOT%\ZTISetVariable.wsf"</action>
+    </step>
+  </group>
   <group name="Initialization" disable="false" continueOnError="false" description="Initialize the TS environment" expand="true">
     <step type="BDD_Gather" name="Gather local only" disable="false" continueOnError="false" successCodeList="0 3010" description="" startIn="">
       <defaultVarList>
