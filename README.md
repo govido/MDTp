@@ -59,6 +59,7 @@ MDTp contains Tools for different workflows for creating and deploying images to
 13. Database tools
     - Import, edit, delete entries
     - WoL, RDP, DaRT multiple PCs from the interface
+    - PC restart option in UI (reinstall existing domain PCs easier)
     - Create inventory-info from all PC-install CSV-files -> gather all install-infos in 1 easy to read file
     
 14. Tasksequence tool
@@ -86,6 +87,5 @@ Wishlist:
 - DHCP server leasetime change (longer to account for holidays etc.)
 - Change hostnames in import-dialog -> correct wrong spelled names etc. easier
 - WDS PXE for thin-clients -> making one imageserver for install and thin-clients, making tftp obsolete
-- PC restart option in UI
-- TS without PXE skip (laptops)
+- TS without PXE skip (laptops) with additional user
 - Make SQL queries faster and in parallel
