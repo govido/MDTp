@@ -89,3 +89,19 @@ Wishlist:
 - WDS PXE for thin-clients -> making one imageserver for install and thin-clients, making tftp obsolete
 - TS without PXE skip (laptops) with additional user
 - Make SQL queries faster and in parallel
+
+
+Mainwindow
+![Mainwindow](Screenshots/Screen1.png)
+Monitoring
+![Mainwindow](Screenshots/Screen2.png)
+New TS, refresh DS
+![Mainwindow](Screenshots/Screen3.png)
+PC-Info, delete
+![Mainwindow](Screenshots/Screen4.png)
+DB-import / delete flyout
+![Mainwindow](Screenshots/Screen5_DB_import.png)
+Domain config / template import
+![Mainwindow](Screenshots/Screen6_domain_config.png)
+TS info / OS change
+![Mainwindow](Screenshots/Screen7_ts_info_os_change.png)
