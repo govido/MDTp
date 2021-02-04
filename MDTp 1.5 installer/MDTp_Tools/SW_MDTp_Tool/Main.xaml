@@ -555,6 +555,15 @@
 								</StackPanel>
 							</Button>
 						</DockPanel>
+						<StackPanel Grid.Row="0" Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Stretch">
+							<Button DockPanel.Dock="Top" HorizontalAlignment="Stretch" Width="auto" Margin="5,5,5,5" Name="import_old_wim_button" ToolTip="Import exisiting WIM-Images from old installation or other sources">
+								<StackPanel Orientation="Horizontal">
+									<iconPacks:PackIconModern Kind="cd"/>
+									<TextBlock Margin="5,0">Import exisiting WIM-files</TextBlock>
+									<iconPacks:PackIconModern Kind="cd"/>
+								</StackPanel>
+							</Button>
+						</StackPanel>
 					</Grid>
 				</TabItem>
 

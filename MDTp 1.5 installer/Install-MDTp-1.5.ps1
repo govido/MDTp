@@ -6,6 +6,7 @@ pause
 mkdir D:\MDTp-Import\Drivers
 mkdir D:\MDTp-Import\PC-Infos
 mkdir D:\MDTp-Import\PC-Reports
+mkdir D:\MDTp-Import\WIM-Images
 robocopy .\MDTp_Tools D:\MDTp_Tools /E
 robocopy .\MDTp_Tools\Shortcuts "C:\Users\Public\Desktop"
 robocopy .\MDTp-Import D:\MDTp-Import /E
