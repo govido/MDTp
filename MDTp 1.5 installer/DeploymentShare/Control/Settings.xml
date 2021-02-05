@@ -40,7 +40,7 @@
   <Boot.x64.IncludeVideoDrivers>False</Boot.x64.IncludeVideoDrivers>
   <Boot.x64.IncludeSystemDrivers>False</Boot.x64.IncludeSystemDrivers>
   <Boot.x64.BackgroundFile>D:\DeploymentShare\MDTp.bmp</Boot.x64.BackgroundFile>
-  <Boot.x64.ExtraDirectory>D:\MDTp_Tools\Scripts_Win_PE\DART_PE_Script</Boot.x64.ExtraDirectory>
+  <Boot.x64.ExtraDirectory>D:\MDTp_Tools\Scripts_Win_PE_DART</Boot.x64.ExtraDirectory>
   <Boot.x64.GenerateGenericWIM>False</Boot.x64.GenerateGenericWIM>
   <Boot.x64.GenerateGenericISO>False</Boot.x64.GenerateGenericISO>
   <Boot.x64.GenericWIMDescription>Generic Windows PE (x64)</Boot.x64.GenericWIMDescription>
