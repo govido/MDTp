@@ -100,21 +100,19 @@
 					<Button IsEnabled="False" Content="Set different image to tasksequnce and save" HorizontalAlignment="Center" VerticalAlignment="Top" Width="auto" Margin="5,5,5,5" Name="save_os_change_exit_button" ToolTip="Change OS image in tasksequnce, useful after image updates"/>
 				</StackPanel>
 			</Controls:Flyout>
-			<Controls:Flyout Name="FlyoutNewTS" Header="New tasksequence" Position="Right" Width="auto" Theme="Light" Background="LightBlue" AreAnimationsEnabled="True" AnimateOpacity="True">
+			<Controls:Flyout Name="FlyoutNewTS" Header="New tasksequence" Position="Right" Width="450" Theme="Light" Background="LightBlue" AreAnimationsEnabled="True" AnimateOpacity="True">
 				<StackPanel Orientation="Vertical" HorizontalAlignment="Stretch">
-					<Label HorizontalAlignment="Left" VerticalAlignment="Top" Content="Template-Name:" Margin="5,5,5,5"/>
 					<StackPanel Orientation="Vertical" HorizontalAlignment="Stretch">
-						<StackPanel Name="horizontal" Orientation="horizontal" HorizontalAlignment="Stretch">
-							<TextBox HorizontalAlignment="Left" VerticalAlignment="Top" Height="20" Width="auto" TextWrapping="Wrap" Margin="5,5,5,5" Name="template_text"/>
-							<Button Content="Template" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="5,5,5,5" Name="template_button"/>
-						</StackPanel>
-						<Label HorizontalAlignment="Left" VerticalAlignment="Top" Content="Image-Name:" Margin="5,5,5,5"/>
+						<Button Content="Select TS template" HorizontalAlignment="Left" VerticalAlignment="Top" Width="auto" Margin="5,5,5,5" Name="template_button" ToolTip="Select exisiting TS template for new TS"/>
+						<Label HorizontalAlignment="Left" VerticalAlignment="Top" Content="Template-Name:" Margin="5,5,5,5"/>
+						<TextBox HorizontalAlignment="Left" VerticalAlignment="Top" Height="auto" Width="auto" TextWrapping="Wrap" Margin="5,5,5,5" Name="template_text"/>
+						<Label HorizontalAlignment="Left" VerticalAlignment="Top" Content="Image-Name:" Margin="0,5,5,5"/>
 						<ListBox HorizontalAlignment="Left" BorderBrush="Black" BorderThickness="1" Height="auto" VerticalAlignment="Top" Width="auto" Margin="5,5,5,5" Name="os_listbox3"/>
-						<Label HorizontalAlignment="Left" VerticalAlignment="Top" Content="OS-Info:" Margin="5,5,5,5"/>
+						<Label HorizontalAlignment="Left" VerticalAlignment="Top" Content="OS-Info:" Margin="0,5,5,5"/>
 						<TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" Text="OS-Info" Margin="5,5,5,5" Name="osinfo_text3"/>
-						<Label HorizontalAlignment="Left" VerticalAlignment="Top" Content="TS name:" Margin="5,5,5,5"/>
+						<Label HorizontalAlignment="Left" VerticalAlignment="Top" Content="TS name:" Margin="0,5,5,5"/>
 						<TextBox HorizontalAlignment="Left" VerticalAlignment="Top" Height="20" Width="80" TextWrapping="Wrap" Margin="5,5,5,5" Name="tssequence_text3"/>
-						<Label HorizontalAlignment="Left" VerticalAlignment="Top" Content="Description" Margin="5,5,5,5"/>
+						<Label HorizontalAlignment="Left" VerticalAlignment="Top" Content="Description" Margin="0,5,5,5"/>
 						<TextBox HorizontalAlignment="Left" VerticalAlignment="Top" Height="auto" Width="auto" TextWrapping="Wrap" Margin="5,5,5,5" Name="comments_text3"/>
 						<Button Content="Create" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="75" Margin="5,5,5,5" Name="create_ts_button"/>
 					</StackPanel>
