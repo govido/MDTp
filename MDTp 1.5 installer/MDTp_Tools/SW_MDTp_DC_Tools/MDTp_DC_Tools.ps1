@@ -2521,7 +2521,7 @@ $Xaml = @"
 
 
 #Write your code here
-$DHCPscope = (Get-DhcpServerv4Scope).ScopeId #an den Beginn des Scripts kopieren
+$DHCPscope = (Get-DhcpServerv4Scope).ScopeId
 
 function dhcp_options_set(){ 
 [System.Windows.Forms.Application]::DoEvents()
@@ -2574,7 +2574,7 @@ $DHCP | Export-CSV -Path \\mdtp\MDTp-Import$\DC_DHCP_Export_$today.csv -NoTypeIn
 $fileToCheck="\\mdtp\MDTp-Import$\DC_DHCP_Export_$today.csv"
 $CSVfilecheck= Get-Content $fileToCheck
 if (Test-Path $fileToCheck -PathType leaf){
-        $status.Text= "Export erfolgreich! Dateivorschau:           $CSVfilecheck"
+        $status.Text= "Export successfull! Datapreview:           $CSVfilecheck"
     }else{
         $status.Text= "Error, please check conenction to MDTp and DNS settings"
     }
