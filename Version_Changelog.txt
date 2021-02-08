@@ -1,0 +1,77 @@
+﻿To-Do:
+WDS PXE skip in parallel with FTP Thinclients?
+TS without PXE skip (for wifi laptops and other 'non-permanent' mobile clients)
+Increase DHCP leasetime from dc tools
+Test MDTp with convertibles and tablets that use network adapters
+
+Begin 1.5:
+
+In-Progress:
+- Extra driver export tool *wip* convert to exe triggers anti-virus, powershell script needs admin rights
+- Edit custom TS variables after TS creation
+
+- Metro UI complete rewrite, all UI xml in one file, all working code in 1 collapsable file (#region)
+- Switch everything to english -> learn or die
+- Status messages in all tabs in the same place
+- Code cleanup
+- Folder rework, clean up broken TS parts
+- Import images with local path not network (network cut and paste needs 2x space, because copies first and deletes the other file, local path moves correctly)
+- Domainconfig with template import function, templates will be renamed to domain name, making it even mor portable
+- TS info shows custom variables
+- Automatic driver import, drivers exported from the tool from 'driver-sample-pc' will be added automatically to MDTp
+- Many delete options for drivers, TS, images and more
+- PC restart, restart installed domain computers for even easier reinstall
+
+Version 1.4.5:
+- Staggered deploy -> every pc install can be started manually or autmatically (making network load easier, if installing large number of clients at once)
+- Change imagefiles in tasksequences with 2 clicks
+- Filter database entries to edit or delete
+- Import only templates from current release version (version number in filename is matched to MDTp_Tool version)
+- Streamline status texts
+- Insert WoL tools, making installs even easier 
+- Refresh database
+- Tabbed Interface, Dockpanel
+- MDT-Monitoring with Dart-shortcut (right-click)
+- WoL from datagrid
+
+Version 1.4:
+- Database PC overview in datagrid, query WDS for PXE-options, query CSV-file for install info (mainboard, imagename, TasksequenceID, installdate...)
+- DART integration!!! -> remote monitoring WinPE even before the login screen (some PE magic scripts needed)
+	- Desktop Optimization Pack 2015 (VLSC) -> DART 10 install->Export Tools.Cab -> edit PE -> Change Unattend.xml for PE start (C:\Programme...\ADK..\Templates) -> Add additional script for Dart to the image / customize which is allowed to update monitoring -> Profit
+- BCDedit PXE_boot primary afer install, windows 10 bootloader secondary (making remote install possible)
+
+Version 1.3:
+- Expanded domainconfig: local adminpassword, standard-homepage, Windows-10 key (MAK or KMS)
+- Dc_tools_copy in installscript and as desktopshortcut
+- Import templates with domainconfig domain (making it truly portable)
+- MDTp_Tool redesign
+- CSV-import -> WDS PXE prestage without F12 presses, tasksequence disables pxe boot on install, CSV-import with assettag to the database
+- Tasksequence import
+- UIID PC-Infos
+- Installscript edit -> domainconfig  -> template_domainconfig is used if no domainconfig.csv is present
+- Save assettag if remimporting/new TS from GUI
+- Delete CSV -> log assettags, UUID, MAC and hostname to csv -> be able to reimport after delete
+
+Version 1.2:
+- WPF window (powershell) for capture TS to enter imagename
+- Capture / import custom template
+- PC-Info file as formatted CSV instead of txt
+- planned task for MDTp-Server (running every 5 minutes)
+- Add option to write imagedescription before capturing
+- Auto imageimport from the MDTp-Server -> Capture finished creates checkfile on server
+- Create PC-Info reports with latest PC data in one file
+- Domain-Config Window
+- WDS-Server bootimage status
+- WDS-Server bootimage on / off (lite / zerotouch)
+- deactiviate PXE-Boot in WDS prestage when install starts
+- integrate CSV-Buddy to edit / view files
+- Customsettings.ini, TasksequenceID sample commented with ' -> uncomment and add your own TS_ID for faster default selection
+- Enter inventory no. when installing new PCs or importing CSV to database (Assettag)
+- Don't allow special characters in PC names: https://docs.microsoft.com/de-de/troubleshoot/windows-server/identity/naming-conventions-for-computer-domain-site-ou
+- Show OSDComputername during installation, making typing errors obvious
+- IT organization branding Litetouch
+- Make assettag persistent after reinstall (added SQL-query in WinPE to get info from the database)
+- WDS-Status of individual PCs in the MDTp-Tool
+- Fix for image-import -> Powershellscript executed from bat-file, otherwise MDT-Powershellmodule won't create OperatingSystems.xml
+- Update Deploymentshare image
+- Import images in WDS
