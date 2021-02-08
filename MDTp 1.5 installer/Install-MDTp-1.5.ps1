@@ -7,6 +7,10 @@ mkdir D:\MDTp-Import\Drivers
 mkdir D:\MDTp-Import\PC-Infos
 mkdir D:\MDTp-Import\PC-Reports
 mkdir D:\MDTp-Import\WIM-Images
+mkdir D:\MDTp_Tools\Import-Logs
+mkdir D:\DeploymentShare\MDTp_Staggered_Deploy
+mkdir D:\DeploymentShare\Scripts\MDTp\OS_Import
+mkdir D:\DeploymentShare\Scripts\MDTp\WDS_PXE
 robocopy .\MDTp_Tools D:\MDTp_Tools /E
 robocopy .\MDTp_Tools\Shortcuts "C:\Users\Public\Desktop"
 robocopy .\MDTp-Import D:\MDTp-Import /E
