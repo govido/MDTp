@@ -89,6 +89,7 @@ Wishlist:
 - WDS PXE for thin-clients -> making one imageserver for install and thin-clients, making tftp obsolete
 - TS without PXE skip (laptops) with additional user
 - Make SQL queries faster and in parallel
+- Intune TS for autopilot / hybrid join scenarios
 
 
 Mainwindow
