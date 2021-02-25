@@ -697,20 +697,6 @@
       </defaultVarList>
       <action>powershell -executionpolicy bypass -file "%SCRIPTROOT%\MDTp\TS_Install_UEFI_PXE_boot_primary.ps1"</action>
     </step>
-    <step type="SMS_TaskSequence_SubTasksequence" name="SIT_Netman_Apps_Sequence" description="" disable="true" continueOnError="false" successCodeList="0 3010">
-      <defaultVarList>
-        <variable name="SubTaskSequenceGUID" property="SubTaskSequenceGUID">{5f926e4e-a3c5-41cd-ad7e-ae51073d418f}</variable>
-        <variable name="SubTaskSequenceID" property="SubTaskSequenceID">_NETMAN_APPS</variable>
-      </defaultVarList>
-      <action>cmd.exe /c exit 9999</action>
-    </step>
-    <step type="SMS_TaskSequence_SubTasksequence" name="SIT_Standard_Apps_Sequence" description="" disable="true" continueOnError="false" successCodeList="0 3010">
-      <defaultVarList>
-        <variable name="SubTaskSequenceGUID" property="SubTaskSequenceGUID">{eb135041-4600-43c7-a622-9bd716b512c4}</variable>
-        <variable name="SubTaskSequenceID" property="SubTaskSequenceID">_STANDARD_APPS</variable>
-      </defaultVarList>
-      <action>cmd.exe /c exit 9999</action>
-    </step>
     <step type="BDD_InstallApplication" name="Install Applications" disable="false" continueOnError="false" successCodeList="0 3010" description="" startIn="">
       <action>cscript.exe "%SCRIPTROOT%\ZTIApplications.wsf"</action>
       <defaultVarList>
