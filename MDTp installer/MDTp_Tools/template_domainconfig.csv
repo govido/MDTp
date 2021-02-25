@@ -1,2 +1,2 @@
 "ADjoinUser","ADjoinPW","Domainname","PC_OU","OSHomepage","AdminPassword_local","Windows_10_key"
-"administrator","Start123","test.domain","OU=NewPCs,OU=Classrooms,DC=muster,DC=domain","www.google.com","Test","aaaaa-bbbbb-ccccc-ddddd-eeeee"
+"administrator","Start123","test.domain","OU=NewPCs,OU=Classrooms,DC=muster,DC=domain","www.google.com","Test",""

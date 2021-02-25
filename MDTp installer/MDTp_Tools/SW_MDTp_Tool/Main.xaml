@@ -154,9 +154,9 @@
 						</StackPanel>
 
 						<Label HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Content="Windows 10 key" Margin="0,0,0,0" ToolTip="Enter MAK or KMS Key to be installed in deploy"/>
-						<TextBox HorizontalAlignment="Left" VerticalAlignment="Top" Height="20" Width="210" TextWrapping="Wrap" Margin="5,0,0,0" Name="windows_10_key_text"/>
+						<TextBox HorizontalAlignment="Left" VerticalAlignment="Top" Height="20" Width="240" TextWrapping="Wrap" Margin="5,0,0,0" Name="windows_10_key_text"/>
 						<Label HorizontalAlignment="Left" VerticalAlignment="Top" Content="Format: 11111-22222-33333-44444-55555" Margin="0,0,0,0"/>
-
+						<Label HorizontalAlignment="Left" VerticalAlignment="Top" Content="Without correct W10-Key install will fail!!! (leave empty if no key should be applied)" Margin="0,0,0,0"/>
 						<Label HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Content="Browser homepage" Margin="0,0,0,0" ToolTip="Set Internet Explorer default page"/>
 						<TextBox HorizontalAlignment="Left" VerticalAlignment="Top" Height="20" Width="210" TextWrapping="Wrap" Margin="5,0,0,0" Name="oshomepage_text"/>
 						<Label HorizontalAlignment="Center" VerticalAlignment="Top" Content="Import new TS-Templates after MDTp update or domainconfig changes:" Margin="0,0,0,0"/>
