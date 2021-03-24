@@ -101,14 +101,6 @@
         </expression>
       </condition>
     </step>
-    <step type="BDD_RunPowerShellAction" name="TS_Install_PC_Info_Log" description="" disable="false" continueOnError="false" successCodeList="0 3010">
-      <defaultVarList>
-        <variable name="ScriptName" property="ScriptName">MDTp\TS_Install_PC_Info_Log.ps1</variable>
-        <variable name="Parameters" property="Parameters"></variable>
-        <variable name="PackageID" property="PackageID"></variable>
-      </defaultVarList>
-      <action>cscript.exe "%SCRIPTROOT%\ZTIPowerShell.wsf</action>
-    </step>
     <step type="BDD_RunPowerShellAction" name="TS_Install_SQL_Import_Update" description="" disable="false" continueOnError="false" successCodeList="0 3010">
       <defaultVarList>
         <variable name="ScriptName" property="ScriptName">MDTp\TS_Install_SQL_Import_Update.ps1</variable>
@@ -764,6 +756,14 @@
         <variable name="SMSTSRunCommandLineUserPassword" property="SMSTSRunCommandLineUserPassword"></variable>
         <variable name="LoadProfile" property="LoadProfile">false</variable>
       </defaultVarList>
+    </step>
+	<step type="BDD_RunPowerShellAction" name="TS_Install_PC_Info_Log" description="" disable="false" continueOnError="false" successCodeList="0 3010">
+      <defaultVarList>
+        <variable name="ScriptName" property="ScriptName">MDTp\TS_Install_PC_Info_Log.ps1</variable>
+        <variable name="Parameters" property="Parameters"></variable>
+        <variable name="PackageID" property="PackageID"></variable>
+      </defaultVarList>
+      <action>cscript.exe "%SCRIPTROOT%\ZTIPowerShell.wsf</action>
     </step>
     <group expand="true" name="Imaging" description="" disable="false" continueOnError="false">
       <action />

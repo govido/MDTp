@@ -27,6 +27,8 @@ $SQLuser = Read-Host -Prompt 'Enter SQL username (admin)'
 $SQLpassword = Read-Host -Prompt 'Enter SQL password'
 $sqldatabase = Read-Host -Prompt 'Enter SQL database name (mdt)'
 (Get-Content "D:\DeploymentShare\Scripts\MDTp\TS_Install_SQL_Import_Update.ps1") | ForEach-Object { $_ -replace "YOURsqlUSERpassword", $SQLpassword -replace "admin", $SQLuser -replace "-sqlServer mdtp", "-sqlServer $env:computername" -replace "-database mdt", "-database $sqldatabase" } | Set-Content "D:\DeploymentShare\Scripts\MDTp\TS_Install_SQL_Import_Update.ps1"
+(Get-Content "D:\DeploymentShare\Scripts\MDTp\TS_Install_SQL_Import_Update_serialnumber_Wifi.ps1") | ForEach-Object { $_ -replace "YOURsqlUSERpassword", $SQLpassword -replace "admin", $SQLuser -replace "-sqlServer mdtp", "-sqlServer $env:computername" -replace "-database mdt", "-database $sqldatabase" } | Set-Content "D:\DeploymentShare\Scripts\MDTp\TS_Install_SQL_Import_Update_serialnumber_Wifi.ps1"
+(Get-Content "D:\DeploymentShare\Scripts\MDTp\TS_Install_PC_Info_Log.ps1") | ForEach-Object { $_ -replace "YOURsqlUSERpassword", $SQLpassword -replace "admin", $SQLuser -replace "-sqlServer mdtp", "-sqlServer $env:computername" -replace "-database mdt", "-database $sqldatabase" } | Set-Content "D:\DeploymentShare\Scripts\MDTp\TS_Install_PC_Info_Log.ps1"
 Copy-Item "C:\Program Files\Microsoft DaRT\v10\DartRemoteViewer.exe" "D:\MDTp_Tools\SW_MDTp_Tool\Modules\DartRemoteViewer.exe"
 $confirmation = Read-Host "Install new DC_Tools in the DC? (y/n)"
 if ($confirmation -eq 'y') {

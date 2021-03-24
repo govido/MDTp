@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<sequence version="3.00" name="1.5_SSUPI_Install_W10_SQL_Staggered_UEFI_PXESkip_Inventory_Sewy" description="Do it all: SQL_Import for new PCs, custom domainoptions for every TS possible, Zerotouch, Inventory-No., custom drivers, staggered deploy, UEFI bootswitch (primary bootdevice will primary again after win install, making PXE the primary option for reinstall etc.)">
+<sequence version="3.00" name="1.5_Wifi_SSUPI_Install_W10_SQL_Staggered_UEFI_PXESkip_Inventory_Sewy" description="Wifi special: only based on SERIALNUMBER not MAC, no PXE primary! Do it all: SQL_Import for new PCs, custom domainoptions for every TS possible, Zerotouch, Inventory-No., custom drivers, staggered deploy, UEFI bootswitch (primary bootdevice will primary again after win install, making PXE the primary option for reinstall etc.)">
   <globalVarList>
     <variable name="OSGUID" property="OSGUID">{258714ba-57bd-4a7b-bf56-c387e7c213fb}</variable>
     <variable name="DestinationDisk" property="DestinationDisk">0</variable>
@@ -103,7 +103,7 @@
     </step>
     <step type="BDD_RunPowerShellAction" name="TS_Install_SQL_Import_Update" description="" disable="false" continueOnError="false" successCodeList="0 3010">
       <defaultVarList>
-        <variable name="ScriptName" property="ScriptName">MDTp\TS_Install_SQL_Import_Update.ps1</variable>
+        <variable name="ScriptName" property="ScriptName">MDTp\TS_Install_SQL_Import_Update_serialnumber_Wifi.ps1</variable>
         <variable name="Parameters" property="Parameters"></variable>
         <variable name="PackageID" property="PackageID"></variable>
       </defaultVarList>
@@ -663,16 +663,6 @@
         <variable name="LoadProfile" property="LoadProfile">false</variable>
       </defaultVarList>
     </step>
-    <step type="SMS_TaskSequence_RunCommandLineAction" name="TS_Install_UEFI_PXE_boot_primary" description="" disable="false" continueOnError="true" startIn="" successCodeList="0 3010" runIn="WinPEandFullOS">
-      <defaultVarList>
-        <variable name="PackageID" property="PackageID"></variable>
-        <variable name="RunAsUser" property="RunAsUser">false</variable>
-        <variable name="SMSTSRunCommandLineUserName" property="SMSTSRunCommandLineUserName"></variable>
-        <variable name="SMSTSRunCommandLineUserPassword" property="SMSTSRunCommandLineUserPassword"></variable>
-        <variable name="LoadProfile" property="LoadProfile">false</variable>
-      </defaultVarList>
-      <action>powershell -executionpolicy bypass -file "%SCRIPTROOT%\MDTp\TS_Install_UEFI_PXE_boot_primary.ps1"</action>
-    </step>
     <step type="BDD_InstallApplication" name="Install Applications" disable="false" continueOnError="false" successCodeList="0 3010" description="" startIn="">
       <action>cscript.exe "%SCRIPTROOT%\ZTIApplications.wsf"</action>
       <defaultVarList>
@@ -741,7 +731,7 @@
         <variable name="LoadProfile" property="LoadProfile">false</variable>
       </defaultVarList>
     </step>
-	<step type="BDD_RunPowerShellAction" name="TS_Install_PC_Info_Log" description="" disable="false" continueOnError="false" successCodeList="0 3010">
+    <step type="BDD_RunPowerShellAction" name="TS_Install_PC_Info_Log" description="" disable="false" continueOnError="false" successCodeList="0 3010">
       <defaultVarList>
         <variable name="ScriptName" property="ScriptName">MDTp\TS_Install_PC_Info_Log.ps1</variable>
         <variable name="Parameters" property="Parameters"></variable>
