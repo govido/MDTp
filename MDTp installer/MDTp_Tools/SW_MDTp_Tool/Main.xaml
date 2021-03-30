@@ -159,6 +159,9 @@
 						<Label HorizontalAlignment="Left" VerticalAlignment="Top" Content="Without correct W10-Key install will fail!!! (leave empty if no key should be applied)" Margin="0,0,0,0"/>
 						<Label HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Content="Browser homepage" Margin="0,0,0,0" ToolTip="Set Internet Explorer default page"/>
 						<TextBox HorizontalAlignment="Left" VerticalAlignment="Top" Height="20" Width="210" TextWrapping="Wrap" Margin="5,0,0,0" Name="oshomepage_text"/>
+						<Label HorizontalAlignment="Left" VerticalAlignment="Top" FontWeight="Bold" Content="BIOS Password" Margin="0,0,0,0" ToolTip="Enter BIOS Password to be set in deploy (if none is set)"/>
+						<TextBox HorizontalAlignment="Left" VerticalAlignment="Top" Height="20" Width="240" TextWrapping="Wrap" Margin="5,0,0,0" Name="bios_pw_text"/>
+						<Label HorizontalAlignment="Left" VerticalAlignment="Top" Content="This is currently used by Lenovo BIOS templates" Margin="0,0,0,0"/>
 						<Label HorizontalAlignment="Center" VerticalAlignment="Top" Content="Import new TS-Templates after MDTp update or domainconfig changes:" Margin="0,0,0,0"/>
 						<Button HorizontalAlignment="Center" Width="auto" Margin="0,20,0,0" Name="save_domain_mdt_template_import_button" ToolTip="Import TS-templates with domainconfig customization (local Password, Windows Key, Domain Join etc.)">
 							<StackPanel Orientation="Horizontal">

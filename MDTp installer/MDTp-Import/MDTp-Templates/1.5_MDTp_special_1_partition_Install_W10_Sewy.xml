@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<sequence version="3.00" name="1.5_SSUPI_Install_W10_SQL_Staggered_UEFI_PXESkip_Inventory_Sewy" description="Do it all: SQL_Import for new PCs, custom domainoptions for every TS possible, Zerotouch, Inventory-No., custom drivers, staggered deploy, UEFI bootswitch (primary bootdevice will primary again after win install, making PXE the primary option for reinstall etc.)">
+<sequence version="3.00" name="1.5_1_partition_Install_W10_SQL_Staggered_UEFI_PXESkip_Inventory_Sewy" description="Do it all: SQL_Import for new PCs, custom domainoptions for every TS possible, Zerotouch, Inventory-No., custom drivers, staggered deploy, UEFI bootswitch (primary bootdevice will primary again after win install, making PXE the primary option for reinstall etc.)">
   <globalVarList>
     <variable name="OSGUID" property="OSGUID">{258714ba-57bd-4a7b-bf56-c387e7c213fb}</variable>
     <variable name="DestinationDisk" property="DestinationDisk">0</variable>
