@@ -82,6 +82,10 @@ MDTp contains Tools for different workflows for creating and deploying images to
     - Option to "skip PXE" to skip install process
     - This makes remote install and reinstall possible (PXE boot as primary required)
     
+17. Set BIOS settings for mass deployments (currently working for Lenovo)
+    - Set BIOS password
+    - Apply BIOS settings for specific models    
+    
 Wishlist:
 
 - DHCP server leasetime change (longer to account for holidays etc.)
