@@ -10,6 +10,7 @@ In-Progress:
 - Extra driver export tool *wip* convert to exe triggers anti-virus, powershell script needs admin rights
 - Edit custom TS variables after TS creation
 
+- Set supervisor password on Lenovo devices with special TS and deployment boot (F12, del in boot menu)
 - Metro UI complete rewrite, all UI xml in one file, all working code in 1 collapsable file (#region)
 - Switch everything to english -> learn or die
 - Status messages in all tabs in the same place
