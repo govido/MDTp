@@ -92,12 +92,13 @@
 							</Style>
 						</DataGrid.CellStyle>
 						<DataGrid.Columns>
+							<DataGridCheckBoxColumn Header="Disabled" Binding="{Binding Disabled}" IsReadOnly="True"/>
 							<DataGridTextColumn Header="Variablestep" Binding="{Binding Variablestep}" IsReadOnly="True"/>
 							<DataGridTextColumn Header="Variablename" Binding="{Binding Variablename}" IsReadOnly="True"/>
 							<DataGridTextColumn Header="VariableValue" Binding="{Binding VariableValue}" IsReadOnly="True"/>
 						</DataGrid.Columns>
 					</DataGrid>
-					<Label HorizontalAlignment="Center" VerticalAlignment="Top" Content="Right-Click to change TS-Values" FontWeight="Bold" Margin="0,0,0,0"/>
+					<Label HorizontalAlignment="Center" VerticalAlignment="Top" Content="Right-Click to change TS-Values, Double-Click to enable/disable features" FontWeight="Bold" Margin="0,0,0,0"/>
 					<Button IsEnabled="False" Content="Set different image to tasksequnce and save" HorizontalAlignment="Center" VerticalAlignment="Top" Width="auto" Margin="5,5,5,5" Name="save_os_change_exit_button" ToolTip="Change OS image in tasksequnce, useful after image updates"/>
 				</StackPanel>
 			</Controls:Flyout>
