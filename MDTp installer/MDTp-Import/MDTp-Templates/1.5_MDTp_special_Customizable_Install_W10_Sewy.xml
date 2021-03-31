@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<sequence version="3.00" name="1.5_Wifi_SSUPI_Install_W10_SQL_Staggered_UEFI_PXESkip_Inventory_Sewy" description="Wifi special: only based on SERIALNUMBER not MAC, no PXE primary! Do it all: SQL_Import for new PCs, custom domainoptions for every TS possible, Zerotouch, Inventory-No., custom drivers, staggered deploy, UEFI bootswitch (primary bootdevice will primary again after win install, making PXE the primary option for reinstall etc.)">
+<sequence version="3.00" name="1.5_Customizable_Install_W10_SQL_Staggered_UEFI_PXESkip_Inventory_Sewy" description="Do it all: SQL_Import for new PCs, custom domainoptions for every TS possible, Zerotouch, Inventory-No., custom drivers, staggered deploy, BIOS config, local Users, UEFI bootswitch (primary bootdevice will primary again after win install, making PXE the primary option for reinstall etc.)">
   <globalVarList>
     <variable name="OSGUID" property="OSGUID">{258714ba-57bd-4a7b-bf56-c387e7c213fb}</variable>
     <variable name="DestinationDisk" property="DestinationDisk">0</variable>
@@ -12,10 +12,45 @@
   </globalVarList>
   <group expand="true" name="MDTp_Set_Custom_Variables" description="" disable="false" continueOnError="false">
     <action />
+    <step type="SMS_TaskSequence_SetVariableAction" name="Use_Serialnumber_notMAC_SQL_Tabletmode" description="Disable for Wifi only devices that need LAN-Adapters for install" disable="true" continueOnError="false" successCodeList="0 3010">
+      <defaultVarList>
+        <variable name="VariableName" property="VariableName">Use_Serialnumber_notMAC_SQL_Tabletmode</variable>
+        <variable name="VariableValue" property="VariableValue">1</variable>
+      </defaultVarList>
+      <action>cscript.exe "%SCRIPTROOT%\ZTISetVariable.wsf"</action>
+    </step>
+    <step type="SMS_TaskSequence_SetVariableAction" name="Create_2nd_Partition_70_30_Split" description="" disable="true" continueOnError="false" successCodeList="0 3010">
+      <defaultVarList>
+        <variable name="VariableName" property="VariableName">Create_2nd_Partition_70_30_Split</variable>
+        <variable name="VariableValue" property="VariableValue">1</variable>
+      </defaultVarList>
+      <action>cscript.exe "%SCRIPTROOT%\ZTISetVariable.wsf"</action>
+    </step>
+    <step type="SMS_TaskSequence_SetVariableAction" name="Create_Local_Users" description="" disable="true" continueOnError="false" successCodeList="0 3010">
+      <defaultVarList>
+        <variable name="VariableName" property="VariableName">Create_Local_Users</variable>
+        <variable name="VariableValue" property="VariableValue">1</variable>
+      </defaultVarList>
+      <action>cscript.exe "%SCRIPTROOT%\ZTISetVariable.wsf"</action>
+    </step>
+    <step type="SMS_TaskSequence_SetVariableAction" name="Make_UEFI_PXE_Primary_Boot" description="Disable for WIFI Laptops" disable="false" continueOnError="false" successCodeList="0 3010">
+      <defaultVarList>
+        <variable name="VariableName" property="VariableName">Make_UEFI_PXE_Primary_Boot</variable>
+        <variable name="VariableValue" property="VariableValue">1</variable>
+      </defaultVarList>
+      <action>cscript.exe "%SCRIPTROOT%\ZTISetVariable.wsf"</action>
+    </step>
     <step type="SMS_TaskSequence_SetVariableAction" name="JoinDomain" description="" disable="false" continueOnError="false" successCodeList="0 3010">
       <defaultVarList>
         <variable name="VariableName" property="VariableName">JoinDomain</variable>
         <variable name="VariableValue" property="VariableValue">demo.domain</variable>
+      </defaultVarList>
+      <action>cscript.exe "%SCRIPTROOT%\ZTISetVariable.wsf"</action>
+    </step>
+    <step type="SMS_TaskSequence_SetVariableAction" name="Set_BIOS_PW" description="" disable="false" continueOnError="false" successCodeList="0 3010">
+      <defaultVarList>
+        <variable name="VariableName" property="VariableName">BIOS_PW</variable>
+        <variable name="VariableValue" property="VariableValue">YOURbiosPW</variable>
       </defaultVarList>
       <action>cscript.exe "%SCRIPTROOT%\ZTISetVariable.wsf"</action>
     </step>
@@ -75,6 +110,34 @@
       </defaultVarList>
       <action>cscript.exe "%SCRIPTROOT%\ZTISetVariable.wsf"</action>
     </step>
+    <step type="SMS_TaskSequence_SetVariableAction" name="LocalUsers" description="" disable="false" continueOnError="false" successCodeList="0 3010">
+      <defaultVarList>
+        <variable name="VariableName" property="VariableName">LocalUsers</variable>
+        <variable name="VariableValue" property="VariableValue">Demouser,Demouser2</variable>
+      </defaultVarList>
+      <action>cscript.exe "%SCRIPTROOT%\ZTISetVariable.wsf"</action>
+    </step>
+    <step type="SMS_TaskSequence_SetVariableAction" name="LocalPasswords" description="" disable="false" continueOnError="false" successCodeList="0 3010">
+      <defaultVarList>
+        <variable name="VariableName" property="VariableName">LocalPasswords</variable>
+        <variable name="VariableValue" property="VariableValue">SecurePW12,SecurePW34</variable>
+      </defaultVarList>
+      <action>cscript.exe "%SCRIPTROOT%\ZTISetVariable.wsf"</action>
+    </step>
+    <step type="SMS_TaskSequence_SetVariableAction" name="LocalAdmins" description="" disable="false" continueOnError="false" successCodeList="0 3010">
+      <defaultVarList>
+        <variable name="VariableName" property="VariableName">LocalAdmins</variable>
+        <variable name="VariableValue" property="VariableValue">Admin1,Admin2</variable>
+      </defaultVarList>
+      <action>cscript.exe "%SCRIPTROOT%\ZTISetVariable.wsf"</action>
+    </step>
+    <step type="SMS_TaskSequence_SetVariableAction" name="LocalAdminPasswords" description="" disable="false" continueOnError="false" successCodeList="0 3010">
+      <defaultVarList>
+        <variable name="VariableName" property="VariableName">LocalAdminPasswords</variable>
+        <variable name="VariableValue" property="VariableValue">AdminPW12,AdminPW34</variable>
+      </defaultVarList>
+      <action>cscript.exe "%SCRIPTROOT%\ZTISetVariable.wsf"</action>
+    </step>
   </group>
   <group name="Initialization" disable="false" continueOnError="false" description="Initialize the TS environment" expand="true">
     <step type="BDD_Gather" name="Gather local only" disable="false" continueOnError="false" successCodeList="0 3010" description="" startIn="">
@@ -103,11 +166,37 @@
     </step>
     <step type="BDD_RunPowerShellAction" name="TS_Install_SQL_Import_Update" description="" disable="false" continueOnError="false" successCodeList="0 3010">
       <defaultVarList>
-        <variable name="ScriptName" property="ScriptName">MDTp\TS_Install_SQL_Import_Update_serialnumber_Wifi.ps1</variable>
-        <variable name="Parameters" property="Parameters"></variable>
-        <variable name="PackageID" property="PackageID"></variable>
+        <variable name="ScriptName" property="ScriptName">MDTp\TS_Install_SQL_Import_Update.ps1</variable>
+        <variable name="Parameters" property="Parameters">
+        </variable>
+        <variable name="PackageID" property="PackageID">
+        </variable>
       </defaultVarList>
       <action>cscript.exe "%SCRIPTROOT%\ZTIPowerShell.wsf</action>
+      <condition>
+        <expression type="SMS_TaskSequence_VariableConditionExpression">
+          <variable name="Variable">Use_Serialnumber_notMAC_SQL_Tabletmode</variable>
+          <variable name="Operator">notEquals</variable>
+          <variable name="Value">1</variable>
+        </expression>
+      </condition>
+    </step>
+    <step type="BDD_RunPowerShellAction" name="TS_Install_SQL_Import_Update_Wifi" description="" disable="false" continueOnError="false" successCodeList="0 3010">
+      <defaultVarList>
+        <variable name="ScriptName" property="ScriptName">MDTp\TS_Install_SQL_Import_Update_serialnumber_Wifi.ps1</variable>
+        <variable name="Parameters" property="Parameters">
+        </variable>
+        <variable name="PackageID" property="PackageID">
+        </variable>
+      </defaultVarList>
+      <action>cscript.exe "%SCRIPTROOT%\ZTIPowerShell.wsf</action>
+      <condition>
+        <expression type="SMS_TaskSequence_VariableConditionExpression">
+          <variable name="Variable">Use_Serialnumber_notMAC_SQL_Tabletmode</variable>
+          <variable name="Operator">equals</variable>
+          <variable name="Value">1</variable>
+        </expression>
+      </condition>
     </step>
     <step type="SMS_TaskSequence_RunCommandLineAction" name="TS_Install_Staggered_Deploy" description="" disable="false" continueOnError="false" startIn="" successCodeList="0 3010" runIn="WinPEandFullOS">
       <defaultVarList>
@@ -118,6 +207,39 @@
         <variable name="LoadProfile" property="LoadProfile">false</variable>
       </defaultVarList>
       <action>powershell -executionpolicy bypass -file "%SCRIPTROOT%\MDTp\TS_Install_staggered_deploy_loop.ps1"</action>
+    </step>
+    <step type="SMS_TaskSequence_RunCommandLineAction" name="TS_BIOS_Settings_PW" description="" disable="false" continueOnError="false" startIn="" successCodeList="0 3010" runIn="WinPEandFullOS">
+      <defaultVarList>
+        <variable name="PackageID" property="PackageID">
+        </variable>
+        <variable name="RunAsUser" property="RunAsUser">false</variable>
+        <variable name="SMSTSRunCommandLineUserName" property="SMSTSRunCommandLineUserName">
+        </variable>
+        <variable name="SMSTSRunCommandLineUserPassword" property="SMSTSRunCommandLineUserPassword">
+        </variable>
+        <variable name="LoadProfile" property="LoadProfile">false</variable>
+      </defaultVarList>
+      <action>powershell -executionpolicy bypass -file "%SCRIPTROOT%\MDTp\BIOS_Settings_Password.ps1"</action>
+      <condition>
+        <expression type="SMS_TaskSequence_VariableConditionExpression">
+          <variable name="Variable">BIOS_PW</variable>
+          <variable name="Operator">greater</variable>
+          <variable name="Value">""</variable>
+        </expression>
+      </condition>
+    </step>
+    <step type="SMS_TaskSequence_RunCommandLineAction" name="TS_Install_Get_Imagename" description="" disable="false" continueOnError="false" startIn="" successCodeList="0 3010" runIn="WinPEandFullOS">
+      <defaultVarList>
+        <variable name="PackageID" property="PackageID">
+        </variable>
+        <variable name="RunAsUser" property="RunAsUser">false</variable>
+        <variable name="SMSTSRunCommandLineUserName" property="SMSTSRunCommandLineUserName">
+        </variable>
+        <variable name="SMSTSRunCommandLineUserPassword" property="SMSTSRunCommandLineUserPassword">
+        </variable>
+        <variable name="LoadProfile" property="LoadProfile">false</variable>
+      </defaultVarList>
+      <action>cmd /c echo Set objShell=WScript.CreateObject("Wscript.Shell"):objShell.run "cscript.exe //nologo ""%SCRIPTROOT%\ZTISetVariable.wsf"" /VariableName:OSDImageName /VariableValue:"""^&amp;Split(Mid("%InstallFromPath%",Len("%SourcePath%")),"\")(1)^&amp;"""" &gt; %temp%\test.vbs,1,True &amp;&amp; wscript //nologo %temp%\test.vbs</action>
     </step>
   </group>
   <group name="Validation" disable="false" continueOnError="false" description="Test" expand="true">
@@ -304,6 +426,11 @@
             <variable name="Value">True</variable>
             <variable name="Variable">IsUEFI</variable>
           </expression>
+          <expression type="SMS_TaskSequence_VariableConditionExpression">
+            <variable name="Variable">Create_2nd_Partition_70_30_Split</variable>
+            <variable name="Operator">notEquals</variable>
+            <variable name="Value">1</variable>
+          </expression>
         </condition>
         <defaultVarList>
           <variable name="OSDDiskIndex" property="DiskIndex">0</variable>
@@ -345,6 +472,11 @@
             <variable name="Value">True</variable>
             <variable name="Variable">IsUEFI</variable>
           </expression>
+          <expression type="SMS_TaskSequence_VariableConditionExpression">
+            <variable name="Variable">Create_2nd_Partition_70_30_Split</variable>
+            <variable name="Operator">notEquals</variable>
+            <variable name="Value">1</variable>
+          </expression>
         </condition>
         <defaultVarList>
           <variable name="OSDDiskIndex" property="DiskIndex">0</variable>
@@ -383,6 +515,122 @@
           <variable name="OSDPartitions3SizeUnits" property="Partitions3SizeUnits">%</variable>
           <variable name="OSDPartitions3VolumeLetterVariable" property="Partitions3VolumeLetterVariable"></variable>
           <variable name="OSDPartitions" property="Partitions">4</variable>
+          <variable name="OSDPartitionStyle" property="PartitionStyle">GPT</variable>
+        </defaultVarList>
+        <action>cscript.exe "%SCRIPTROOT%\ZTIDiskpart.wsf"</action>
+      </step>
+       <step type="SMS_TaskSequence_PartitionDiskAction" name="70_30 Format and Partition Disk (BIOS) " description="" disable="false" continueOnError="false" runIn="WinPEandFullOS" successCodeList="0 3010">
+        <condition>
+          <expression type="SMS_TaskSequence_VariableConditionExpression">
+            <variable name="Operator">notEquals</variable>
+            <variable name="Value">True</variable>
+            <variable name="Variable">IsUEFI</variable>
+          </expression>
+          <expression type="SMS_TaskSequence_VariableConditionExpression">
+            <variable name="Variable">Create_2nd_Partition_70_30_Split</variable>
+            <variable name="Operator">equals</variable>
+            <variable name="Value">1</variable>
+          </expression>
+        </condition>
+        <defaultVarList>
+          <variable name="OSDDiskIndex" property="DiskIndex">0</variable>
+          <variable name="OSDDiskPartitions1Type" property="OSDDiskPartitions1Type">Recovery</variable>
+          <variable name="DONotCreateExtraPartition" property="DONotCreateExtraPartition"></variable>
+          <variable name="OSDPartitions0Type" property="Partitions0Type">Primary</variable>
+          <variable name="OSDPartitions0FileSystem" property="Partitions0FileSystem">NTFS</variable>
+          <variable name="OSDPartitions0Bootable" property="Partitions0Bootable">True</variable>
+          <variable name="OSDPartitions0QuickFormat" property="Partitions0QuickFormat">True</variable>
+          <variable name="OSDPartitions0VolumeName" property="Partitions0VolumeName">System Reserved</variable>
+          <variable name="OSDPartitions0Size" property="Partitions0Size">499</variable>
+          <variable name="OSDPartitions0SizeUnits" property="Partitions0SizeUnits">MB</variable>
+          <variable name="OSDPartitions0VolumeLetterVariable" property="Partitions0VolumeLetterVariable"></variable>
+          <variable name="OSDPartitions1Type" property="Partitions1Type">Primary</variable>
+          <variable name="OSDPartitions1FileSystem" property="Partitions1FileSystem">NTFS</variable>
+          <variable name="OSDPartitions1Bootable" property="Partitions1Bootable">False</variable>
+          <variable name="OSDPartitions1QuickFormat" property="Partitions1QuickFormat">True</variable>
+          <variable name="OSDPartitions1VolumeName" property="Partitions1VolumeName">Windows</variable>
+          <variable name="OSDPartitions1Size" property="Partitions1Size">70</variable>
+          <variable name="OSDPartitions1SizeUnits" property="Partitions1SizeUnits">%</variable>
+          <variable name="OSDPartitions1VolumeLetterVariable" property="Partitions1VolumeLetterVariable">OSDisk</variable>
+          <variable name="OSDPartitions2Type" property="Partitions2Type">Primary</variable>
+          <variable name="OSDPartitions2FileSystem" property="Partitions2FileSystem">NTFS</variable>
+          <variable name="OSDPartitions2Bootable" property="Partitions2Bootable">False</variable>
+          <variable name="OSDPartitions2QuickFormat" property="Partitions2QuickFormat">True</variable>
+          <variable name="OSDPartitions2VolumeName" property="Partitions2VolumeName">Zusatzdaten</variable>
+          <variable name="OSDPartitions2Size" property="Partitions2Size">98</variable>
+          <variable name="OSDPartitions2SizeUnits" property="Partitions2SizeUnits">%</variable>
+          <variable name="OSDPartitions2VolumeLetterVariable" property="Partitions2VolumeLetterVariable"></variable>
+          <variable name="OSDPartitions3Type" property="Partitions3Type">Recovery</variable>
+          <variable name="OSDPartitions3FileSystem" property="Partitions3FileSystem">NTFS</variable>
+          <variable name="OSDPartitions3Bootable" property="Partitions3Bootable">False</variable>
+          <variable name="OSDPartitions3QuickFormat" property="Partitions3QuickFormat">True</variable>
+          <variable name="OSDPartitions3VolumeName" property="Partitions3VolumeName">Recovery</variable>
+          <variable name="OSDPartitions3Size" property="Partitions3Size">100</variable>
+          <variable name="OSDPartitions3SizeUnits" property="Partitions3SizeUnits">%</variable>
+          <variable name="OSDPartitions3VolumeLetterVariable" property="Partitions3VolumeLetterVariable"></variable>
+          <variable name="OSDPartitions" property="Partitions">4</variable>
+          <variable name="OSDPartitionStyle" property="PartitionStyle">MBR</variable>
+        </defaultVarList>
+        <action>cscript.exe "%SCRIPTROOT%\ZTIDiskpart.wsf"</action>
+      </step>
+      <step type="SMS_TaskSequence_PartitionDiskAction" name="70_30 Format and Partition Disk (UEFI)" description="" runIn="WinPE" successCodeList="0" disable="false" continueOnError="false">
+        <condition>
+          <expression type="SMS_TaskSequence_VariableConditionExpression">
+            <variable name="Operator">equals</variable>
+            <variable name="Value">True</variable>
+            <variable name="Variable">IsUEFI</variable>
+          </expression>
+          <expression type="SMS_TaskSequence_VariableConditionExpression">
+            <variable name="Variable">Create_2nd_Partition_70_30_Split</variable>
+            <variable name="Operator">equals</variable>
+            <variable name="Value">1</variable>
+          </expression>
+        </condition>
+        <defaultVarList>
+          <variable name="OSDDiskIndex" property="DiskIndex">0</variable>
+          <variable name="OSDDiskPartitions1Type" property="OSDDiskPartitions1Type">Recovery</variable>
+          <variable name="DONotCreateExtraPartition" property="DONotCreateExtraPartition"></variable>
+          <variable name="OSDPartitions0Type" property="Partitions0Type">EFI</variable>
+          <variable name="OSDPartitions0FileSystem" property="Partitions0FileSystem">FAT32</variable>
+          <variable name="OSDPartitions0Bootable" property="Partitions0Bootable">True</variable>
+          <variable name="OSDPartitions0QuickFormat" property="Partitions0QuickFormat">True</variable>
+          <variable name="OSDPartitions0VolumeName" property="Partitions0VolumeName">Boot</variable>
+          <variable name="OSDPartitions0Size" property="Partitions0Size">499</variable>
+          <variable name="OSDPartitions0SizeUnits" property="Partitions0SizeUnits">MB</variable>
+          <variable name="OSDPartitions0VolumeLetterVariable" property="Partitions0VolumeLetterVariable"></variable>
+          <variable name="OSDPartitions1Type" property="Partitions1Type">MSR</variable>
+          <variable name="OSDPartitions1FileSystem" property="Partitions1FileSystem">NTFS</variable>
+          <variable name="OSDPartitions1Bootable" property="Partitions1Bootable">False</variable>
+          <variable name="OSDPartitions1QuickFormat" property="Partitions1QuickFormat">True</variable>
+          <variable name="OSDPartitions1VolumeName" property="Partitions1VolumeName"></variable>
+          <variable name="OSDPartitions1Size" property="Partitions1Size">128</variable>
+          <variable name="OSDPartitions1SizeUnits" property="Partitions1SizeUnits">MB</variable>
+          <variable name="OSDPartitions1VolumeLetterVariable" property="Partitions1VolumeLetterVariable"></variable>
+          <variable name="OSDPartitions2Type" property="Partitions2Type">Primary</variable>
+          <variable name="OSDPartitions2FileSystem" property="Partitions2FileSystem">NTFS</variable>
+          <variable name="OSDPartitions2Bootable" property="Partitions2Bootable">False</variable>
+          <variable name="OSDPartitions2QuickFormat" property="Partitions2QuickFormat">True</variable>
+          <variable name="OSDPartitions2VolumeName" property="Partitions2VolumeName">Windows</variable>
+          <variable name="OSDPartitions2Size" property="Partitions2Size">70</variable>
+          <variable name="OSDPartitions2SizeUnits" property="Partitions2SizeUnits">%</variable>
+          <variable name="OSDPartitions2VolumeLetterVariable" property="Partitions2VolumeLetterVariable">OSDisk</variable>
+          <variable name="OSDPartitions3Type" property="Partitions3Type">Primary</variable>
+          <variable name="OSDPartitions3FileSystem" property="Partitions3FileSystem">NTFS</variable>
+          <variable name="OSDPartitions3Bootable" property="Partitions3Bootable">False</variable>
+          <variable name="OSDPartitions3QuickFormat" property="Partitions3QuickFormat">True</variable>
+          <variable name="OSDPartitions3VolumeName" property="Partitions3VolumeName">Zusatzdaten</variable>
+          <variable name="OSDPartitions3Size" property="Partitions3Size">98</variable>
+          <variable name="OSDPartitions3SizeUnits" property="Partitions3SizeUnits">%</variable>
+          <variable name="OSDPartitions3VolumeLetterVariable" property="Partitions3VolumeLetterVariable"></variable>
+          <variable name="OSDPartitions4Type" property="Partitions4Type">Recovery</variable>
+          <variable name="OSDPartitions4FileSystem" property="Partitions4FileSystem">NTFS</variable>
+          <variable name="OSDPartitions4Bootable" property="Partitions4Bootable">False</variable>
+          <variable name="OSDPartitions4QuickFormat" property="Partitions4QuickFormat">True</variable>
+          <variable name="OSDPartitions4VolumeName" property="Partitions4VolumeName">Recovery</variable>
+          <variable name="OSDPartitions4Size" property="Partitions4Size">100</variable>
+          <variable name="OSDPartitions4SizeUnits" property="Partitions4SizeUnits">%</variable>
+          <variable name="OSDPartitions4VolumeLetterVariable" property="Partitions4VolumeLetterVariable"></variable>
+          <variable name="OSDPartitions" property="Partitions">5</variable>
           <variable name="OSDPartitionStyle" property="PartitionStyle">GPT</variable>
         </defaultVarList>
         <action>cscript.exe "%SCRIPTROOT%\ZTIDiskpart.wsf"</action>
@@ -663,6 +911,26 @@
         <variable name="LoadProfile" property="LoadProfile">false</variable>
       </defaultVarList>
     </step>
+    <step type="SMS_TaskSequence_RunCommandLineAction" name="TS_Install_UEFI_PXE_boot_primary" description="" disable="false" continueOnError="true" startIn="" successCodeList="0 3010" runIn="WinPEandFullOS">
+      <defaultVarList>
+        <variable name="PackageID" property="PackageID">
+        </variable>
+        <variable name="RunAsUser" property="RunAsUser">false</variable>
+        <variable name="SMSTSRunCommandLineUserName" property="SMSTSRunCommandLineUserName">
+        </variable>
+        <variable name="SMSTSRunCommandLineUserPassword" property="SMSTSRunCommandLineUserPassword">
+        </variable>
+        <variable name="LoadProfile" property="LoadProfile">false</variable>
+      </defaultVarList>
+      <action>powershell -executionpolicy bypass -file "%SCRIPTROOT%\MDTp\TS_Install_UEFI_PXE_boot_primary.ps1"</action>
+      <condition>
+        <expression type="SMS_TaskSequence_VariableConditionExpression">
+          <variable name="Variable">Make_UEFI_PXE_Primary_Boot</variable>
+          <variable name="Operator">equals</variable>
+          <variable name="Value">1</variable>
+        </expression>
+      </condition>
+    </step>
     <step type="BDD_InstallApplication" name="Install Applications" disable="false" continueOnError="false" successCodeList="0 3010" description="" startIn="">
       <action>cscript.exe "%SCRIPTROOT%\ZTIApplications.wsf"</action>
       <defaultVarList>
@@ -731,11 +999,33 @@
         <variable name="LoadProfile" property="LoadProfile">false</variable>
       </defaultVarList>
     </step>
+    <step type="SMS_TaskSequence_RunCommandLineAction" name="TS_Install_Local_Users" description="" disable="false" continueOnError="false" startIn="" successCodeList="0 3010" runIn="WinPEandFullOS">
+      <defaultVarList>
+        <variable name="PackageID" property="PackageID">
+        </variable>
+        <variable name="RunAsUser" property="RunAsUser">false</variable>
+        <variable name="SMSTSRunCommandLineUserName" property="SMSTSRunCommandLineUserName">
+        </variable>
+        <variable name="SMSTSRunCommandLineUserPassword" property="SMSTSRunCommandLineUserPassword">
+        </variable>
+        <variable name="LoadProfile" property="LoadProfile">false</variable>
+      </defaultVarList>
+      <action>powershell -executionpolicy bypass -file "%SCRIPTROOT%\MDTp\TS_Install_Local_Users.ps1"</action>
+      <condition>
+        <expression type="SMS_TaskSequence_VariableConditionExpression">
+          <variable name="Variable">Create_Local_Users</variable>
+          <variable name="Operator">equals</variable>
+          <variable name="Value">1</variable>
+        </expression>
+      </condition>
+    </step>
     <step type="BDD_RunPowerShellAction" name="TS_Install_PC_Info_Log" description="" disable="false" continueOnError="false" successCodeList="0 3010">
       <defaultVarList>
         <variable name="ScriptName" property="ScriptName">MDTp\TS_Install_PC_Info_Log.ps1</variable>
-        <variable name="Parameters" property="Parameters"></variable>
-        <variable name="PackageID" property="PackageID"></variable>
+        <variable name="Parameters" property="Parameters">
+        </variable>
+        <variable name="PackageID" property="PackageID">
+        </variable>
       </defaultVarList>
       <action>cscript.exe "%SCRIPTROOT%\ZTIPowerShell.wsf</action>
     </step>
