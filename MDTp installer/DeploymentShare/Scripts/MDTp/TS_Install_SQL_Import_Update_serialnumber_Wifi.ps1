@@ -34,7 +34,7 @@ if ($machineid.id -gt 0)
 			{
 			Remove-MDTComputer $machineid.id
 			}
-		New-MDTComputer -description $OSDComputerName -serialnumber $SERIALNUMBER -assetTag $ASSETTAG -uuid $UUID -settings @{
+		New-MDTComputer -description $OSDComputerName -serialnumber $SERIALNUMBER -assetTag $ASSETTAG -settings @{
 			OSInstall='YES';
 			SkipComputerName='YES';
 			SkipDomainMembership='YES';

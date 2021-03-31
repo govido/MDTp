@@ -8,6 +8,7 @@ Begin 1.5:
 In-Progress:
 - Extra driver export tool *wip* convert to exe triggers anti-virus, powershell script needs admin rights
 
+- Shorcut to customsettings.ini to edit default TS and SQL settings
 - Use only 1 customizable TS for many needs (using only Serialnumber for tablet/wifi only devices, 2 partitions, non domain, no primary PXE etc.)
 - Edit custom TS variables after TS creation (change passwords, OU, domain, keys etc.)
 - Enable and disable TS variables and tasks (enable 2nd partiton, disable domainjoin, enable local users etc.)
