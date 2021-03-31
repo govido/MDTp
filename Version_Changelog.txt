@@ -1,6 +1,5 @@
 ﻿To-Do:
 WDS PXE skip in parallel with FTP Thinclients?
-TS without PXE skip (for wifi laptops and other 'non-permanent' mobile clients)
 Increase DHCP leasetime from dc tools
 Test MDTp with convertibles and tablets that use network adapters
 
@@ -8,9 +7,12 @@ Begin 1.5:
 
 In-Progress:
 - Extra driver export tool *wip* convert to exe triggers anti-virus, powershell script needs admin rights
-- Edit custom TS variables after TS creation
 
+- Use only 1 customizable TS for many needs (using only Serialnumber for tablet/wifi only devices, 2 partitions, non domain, no primary PXE etc.)
+- Edit custom TS variables after TS creation (change passwords, OU, domain, keys etc.)
+- Enable and disable TS variables and tasks (enable 2nd partiton, disable domainjoin, enable local users etc.)
 - Set supervisor password on Lenovo devices with special TS and deployment boot (F12, del in boot menu)
+- Configure BIOS for Lenovo machines with CSV-files (Demofile for E15gen2 included)
 - Metro UI complete rewrite, all UI xml in one file, all working code in 1 collapsable file (#region)
 - Switch everything to english -> learn or die
 - Status messages in all tabs in the same place
