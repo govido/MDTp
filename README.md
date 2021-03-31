@@ -69,6 +69,7 @@ MDTp contains Tools for different workflows for creating and deploying images to
     - Delete old images
     - Delete old driver-folders
     - Get TS info and show which image will be applied in that TS
+    - Edit TS Variables and enable/disable steps to change domainjoin, partitions, pxe_boot etc.
     
 15. Quick deployment share update
     - Update Litetouch AND Zerotouch images
@@ -91,7 +92,6 @@ Wishlist:
 - DHCP server leasetime change (longer to account for holidays etc.)
 - Change hostnames in import-dialog -> correct wrong spelled names etc. easier
 - WDS PXE for thin-clients -> making one imageserver for install and thin-clients, making tftp obsolete
-- TS without PXE skip (laptops) with additional user
 - Make SQL queries faster and in parallel
 - Intune TS for autopilot / hybrid join scenarios
 
