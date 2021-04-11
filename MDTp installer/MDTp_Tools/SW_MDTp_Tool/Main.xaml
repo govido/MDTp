@@ -8,7 +8,7 @@
 	xmlns:system="clr-namespace:System;assembly=mscorlib"
 	xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
 	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" Title="MDTp Tool 1.5												be FASTER" Name="MDTp_Tool" Height="auto" Width="auto" WindowState="Maximized" WindowStartupLocation="CenterScreen" ResizeMode="CanResizeWithGrip" WindowStyle="None" GlowBrush="{DynamicResource AccentColorBrush}" Topmost="False" TitleCharacterCasing="Normal">
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" Name="MDTp_Tool" Height="auto" Width="auto" WindowState="Maximized" WindowStartupLocation="CenterScreen" ResizeMode="CanResizeWithGrip" WindowStyle="None" GlowBrush="{DynamicResource AccentColorBrush}" Topmost="False" TitleCharacterCasing="Normal">
 
 	<Window.Resources>
 		<ResourceDictionary>
@@ -70,49 +70,56 @@
 				</StackPanel>
 			</Controls:Flyout>
 			<Controls:Flyout Name="FlyoutTSinfo" Header="TS Info / OS Change" Position="Right" Width="auto" Theme="Light" Background="#FFFFB175" AreAnimationsEnabled="True" AnimateOpacity="True">
-				<StackPanel Orientation="Vertical" HorizontalAlignment="Stretch">
-					<Label HorizontalAlignment="Center" VerticalAlignment="Top" Content="Select existing tasksequence:" FontWeight="Bold" Margin="0,0,0,0"/>
-					<ComboBox HorizontalAlignment="Center" BorderBrush="Black" BorderThickness="1" Height="auto" VerticalAlignment="Top" Width="auto" MinWidth="250" Margin="5,5,5,5" Name="ts_combobox"/>
-					<TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" TextWrapping="Wrap" Text="TS Beschreibung:" Margin="5,5,5,5" FontWeight="Bold"/>
-					<TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" TextWrapping="Wrap" Text="TS-Info" MaxWidth="650" Margin="5,5,5,5" Name="tsinfo_text"/>
-					<TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" TextWrapping="Wrap" Text="OS Image Info:" Margin="5,5,5,5" FontWeight="Bold" Name="osname_text"/>
-					<TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" TextWrapping="Wrap" Text="OS-Info" Margin="5,5,5,5" Name="osinfo_text"/>
-					<CheckBox HorizontalAlignment="Center" VerticalAlignment="Top" Content="Check to change install image:" Margin="5,5,5,5" Name="os_change_checkbox" FontWeight="Bold" ToolTip="Check to change TS image"/>
-					<ListBox IsEnabled="False" HorizontalAlignment="Center" BorderBrush="Black" BorderThickness="1" Height="auto" VerticalAlignment="Top" Width="auto" Margin="5,5,5,5" Name="os_listbox"/>
-					<Label HorizontalAlignment="Center" VerticalAlignment="Top" Content="New image info:" FontWeight="Bold" Margin="0,0,0,0"/>
-					<TextBlock HorizontalAlignment="Center" VerticalAlignment="Top" TextWrapping="Wrap" Text="OS-Info" Margin="5,5,5,5" Name="osinfo_new_text"/>
-					<DataGrid HorizontalAlignment="Center" Grid.Row="1" Grid.ColumnSpan="2" VerticalAlignment="Top" SelectionMode="Single" Width="auto" Height="auto" Margin="10,5,5,5" Name="ts_variables_datagrid">
-						<DataGrid.RowStyle>
-							<Style TargetType="DataGridRow">
-								<Style.Triggers>
-									<DataTrigger Binding="{Binding Disabled}" Value="true">
-										<Setter Property="Background" Value="Tomato"></Setter>
-									</DataTrigger>
-									<DataTrigger Binding="{Binding Disabled}" Value="false">
-										<Setter Property="Background" Value="LightGreen"></Setter>
-									</DataTrigger>
-								</Style.Triggers>
-							</Style>
-						</DataGrid.RowStyle>
-						<DataGrid.CellStyle>
-							<Style TargetType="DataGridCell">
-								<Style.Triggers>
-									<Trigger Property="IsSelected" Value="True">
-										<Setter Property="Background" Value="LightBlue"/>
-									</Trigger>
-								</Style.Triggers>
-							</Style>
-						</DataGrid.CellStyle>
-						<DataGrid.Columns>
-							<DataGridCheckBoxColumn Header="Disabled" Binding="{Binding Disabled}" IsReadOnly="True"/>
-							<DataGridTextColumn Header="Variablestep" Binding="{Binding Variablestep}" IsReadOnly="True"/>
-							<DataGridTextColumn Header="Variablename" Binding="{Binding Variablename}" IsReadOnly="True"/>
-							<DataGridTextColumn Header="VariableValue" Binding="{Binding VariableValue}" IsReadOnly="True"/>
-						</DataGrid.Columns>
-					</DataGrid>
-					<Label HorizontalAlignment="Center" VerticalAlignment="Top" Content="Right-Click to change TS-Values, Double-Click to enable/disable features" FontWeight="Bold" Margin="0,0,0,0"/>
-					<Button IsEnabled="False" Content="Set different image to tasksequnce and save" HorizontalAlignment="Center" VerticalAlignment="Top" Width="auto" Margin="5,5,5,5" Name="save_os_change_exit_button" ToolTip="Change OS image in tasksequnce, useful after image updates"/>
-				</StackPanel>
+				<DockPanel HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+					<Label DockPanel.Dock="Top" HorizontalAlignment="Center" VerticalAlignment="Top" Content="Select existing tasksequence:" FontWeight="Bold" Margin="0,0,0,0"/>
+					<ComboBox DockPanel.Dock="Top" HorizontalAlignment="Center" BorderBrush="Black" BorderThickness="1" Height="auto" VerticalAlignment="Top" Width="auto" MinWidth="250" Margin="5,5,5,5" Name="ts_combobox"/>
+					<TextBlock DockPanel.Dock="Top" HorizontalAlignment="Center" VerticalAlignment="Top" TextWrapping="Wrap" Text="TS Beschreibung:" Margin="5,5,5,5" FontWeight="Bold"/>
+					<TextBlock DockPanel.Dock="Top" HorizontalAlignment="Center" VerticalAlignment="Top" TextWrapping="Wrap" Text="TS-Info" MaxWidth="650" Margin="5,5,5,5" Name="tsinfo_text"/>
+					<TextBlock DockPanel.Dock="Top" HorizontalAlignment="Center" VerticalAlignment="Top" TextWrapping="Wrap" Text="OS Image Info:" Margin="5,5,5,5" FontWeight="Bold" Name="osname_text"/>
+					<TextBlock DockPanel.Dock="Top" HorizontalAlignment="Center" VerticalAlignment="Top" TextWrapping="Wrap" Text="OS-Info" Margin="5,5,5,5" Name="osinfo_text"/>
+					<CheckBox DockPanel.Dock="Top" HorizontalAlignment="Center" VerticalAlignment="Top" Content="Check to change install image:" Margin="5,5,5,5" Name="os_change_checkbox" FontWeight="Bold" ToolTip="Check to change TS image"/>
+					<ListBox DockPanel.Dock="Top" IsEnabled="False" HorizontalAlignment="Center" BorderBrush="Black" BorderThickness="1" Height="auto" VerticalAlignment="Top" Width="auto" Margin="5,5,5,5" Name="os_listbox"/>
+					<Label DockPanel.Dock="Top" HorizontalAlignment="Center" VerticalAlignment="Top" Content="New image info:" FontWeight="Bold" Margin="0,0,0,0"/>
+					<TextBlock DockPanel.Dock="Top" HorizontalAlignment="Center" VerticalAlignment="Top" TextWrapping="Wrap" Text="OS-Info" Margin="5,5,5,5" Name="osinfo_new_text"/>
+					<Grid DockPanel.Dock="Top">
+						<Grid.RowDefinitions>
+							<RowDefinition Height="*"/>
+							<RowDefinition Height="Auto"/>
+							<RowDefinition Height="auto" />
+						</Grid.RowDefinitions>
+						<DataGrid Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SelectionMode="Single" Width="auto" Height="auto" Margin="10,5,5,5" Name="ts_variables_datagrid">
+							<DataGrid.RowStyle>
+								<Style TargetType="DataGridRow">
+									<Style.Triggers>
+										<DataTrigger Binding="{Binding Disabled}" Value="true">
+											<Setter Property="Background" Value="Tomato"></Setter>
+										</DataTrigger>
+										<DataTrigger Binding="{Binding Disabled}" Value="false">
+											<Setter Property="Background" Value="LightGreen"></Setter>
+										</DataTrigger>
+									</Style.Triggers>
+								</Style>
+							</DataGrid.RowStyle>
+							<DataGrid.CellStyle>
+								<Style TargetType="DataGridCell">
+									<Style.Triggers>
+										<Trigger Property="IsSelected" Value="True">
+											<Setter Property="Background" Value="LightBlue"/>
+										</Trigger>
+									</Style.Triggers>
+								</Style>
+							</DataGrid.CellStyle>
+							<DataGrid.Columns>
+								<DataGridCheckBoxColumn Header="Disabled" Binding="{Binding Disabled}" IsReadOnly="True"/>
+								<DataGridTextColumn Header="Variablestep" Binding="{Binding Variablestep}" IsReadOnly="True"/>
+								<DataGridTextColumn Header="Variablename" Binding="{Binding Variablename}" IsReadOnly="True"/>
+								<DataGridTextColumn Header="VariableValue" Binding="{Binding VariableValue}" IsReadOnly="True"/>
+							</DataGrid.Columns>
+						</DataGrid>
+						<Label Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" Content="Right-Click to change TS-Values, Double-Click to enable/disable features" FontWeight="Bold" Margin="0,0,0,0"/>
+						<Button Grid.Row="2" IsEnabled="False" Content="Set different image to tasksequnce and save" HorizontalAlignment="Center" VerticalAlignment="Top" Width="auto" Margin="5,5,5,5" Name="save_os_change_exit_button" ToolTip="Change OS image in tasksequnce, useful after image updates"/>
+					</Grid>
+				</DockPanel>
 			</Controls:Flyout>
 			<Controls:Flyout Name="FlyoutNewTS" Header="New tasksequence" Position="Right" Width="auto" MinWidth="350" Theme="Light" Background="LightBlue" AreAnimationsEnabled="True" AnimateOpacity="True">
 				<StackPanel Orientation="Vertical" HorizontalAlignment="Stretch">

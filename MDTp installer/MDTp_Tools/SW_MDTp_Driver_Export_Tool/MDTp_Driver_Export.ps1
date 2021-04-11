@@ -1,3 +1,6 @@
+
+Start-Process Powershell -Verb runAs -Argument "-Command "
+
 #-------------------------------------------------------------#
 #----Initial Declarations-------------------------------------#
 #-------------------------------------------------------------#
@@ -70,3 +73,5 @@ $export_drivers_button.Add_Click( { export_drivers $this $_ })
 $Window.ShowDialog()
 
 
+"
+"

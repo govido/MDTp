@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<sequence version="3.00" name="1.5_Audit_Mode_Template_SeWy" description="Installation for WIM-Files to edit in W10 Audit-Mode (install/uninstall software/updates)">
+<sequence version="3.00" name="TEMPLATEversion_Audit_Mode_Template_SeWy" description="Installation for WIM-Files to edit in W10 Audit-Mode (install/uninstall software/updates)">
   <globalVarList>
     <variable name="OSGUID" property="OSGUID">{258714ba-57bd-4a7b-bf56-c387e7c213fb}</variable>
     <variable name="DestinationDisk" property="DestinationDisk">0</variable>

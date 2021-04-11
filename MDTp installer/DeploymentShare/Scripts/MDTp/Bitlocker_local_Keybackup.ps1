@@ -1,0 +1,1 @@
+(Get-BitLockerVolume).keyprotector | Where-Object KeyProtectorType -eq "RecoveryPassword" | Out-File -FilePath "\\mdtp\mdtp-import$\PC-Infos\Bitlocker-Keys\$env:computername-Bitlocker.txt"

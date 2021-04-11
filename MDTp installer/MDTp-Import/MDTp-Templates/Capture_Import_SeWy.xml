@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<sequence version="3.00" name="1.5_Capture_Import_SeWy.xml" description="Capture a Sysprep-Installation, Custom scripts for imagename, description and auto-import">
+<sequence version="3.00" name="TEMPLATEversion_Capture_Import_SeWy.xml" description="Capture a Sysprep-Installation, Custom scripts for imagename, description and auto-import">
   <step type="SMS_TaskSequence_SetVariableAction" name="Capture" description="" disable="false" continueOnError="false" successCodeList="0 3010">
     <defaultVarList>
       <variable name="VariableName" property="VariableName">DoCapture</variable>
