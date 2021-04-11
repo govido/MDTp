@@ -33,6 +33,13 @@
       </defaultVarList>
       <action>cscript.exe "%SCRIPTROOT%\ZTISetVariable.wsf"</action>
     </step>
+    <step type="SMS_TaskSequence_SetVariableAction" name="Enable Bitlocker with TPM" description="" disable="false" continueOnError="false" successCodeList="0 3010">
+      <defaultVarList>
+        <variable name="VariableName" property="VariableName">BdeInstallSuppress</variable>
+        <variable name="VariableValue" property="VariableValue">NO</variable>
+      </defaultVarList>
+      <action>cscript.exe "%SCRIPTROOT%\ZTISetVariable.wsf"</action>
+    </step>
     <step type="SMS_TaskSequence_SetVariableAction" name="Make_UEFI_PXE_Primary_Boot" description="Disable for WIFI Laptops" disable="false" continueOnError="false" successCodeList="0 3010">
       <defaultVarList>
         <variable name="VariableName" property="VariableName">Make_UEFI_PXE_Primary_Boot</variable>
@@ -519,7 +526,7 @@
         </defaultVarList>
         <action>cscript.exe "%SCRIPTROOT%\ZTIDiskpart.wsf"</action>
       </step>
-       <step type="SMS_TaskSequence_PartitionDiskAction" name="70_30 Format and Partition Disk (BIOS) " description="" disable="false" continueOnError="false" runIn="WinPEandFullOS" successCodeList="0 3010">
+      <step type="SMS_TaskSequence_PartitionDiskAction" name="70_30 Format and Partition Disk (BIOS) " description="" disable="false" continueOnError="false" runIn="WinPEandFullOS" successCodeList="0 3010">
         <condition>
           <expression type="SMS_TaskSequence_VariableConditionExpression">
             <variable name="Operator">notEquals</variable>
@@ -1028,6 +1035,23 @@
         </variable>
       </defaultVarList>
       <action>cscript.exe "%SCRIPTROOT%\ZTIPowerShell.wsf</action>
+    </step>
+    <step type="BDD_RunPowerShellAction" name="Bitlocker_local_MDTp_Keybackup" description="" disable="false" continueOnError="false" successCodeList="0 3010">
+      <defaultVarList>
+        <variable name="ScriptName" property="ScriptName">MDTp\Bitlocker_local_Keybackup.ps1</variable>
+        <variable name="Parameters" property="Parameters">
+        </variable>
+        <variable name="PackageID" property="PackageID">
+        </variable>
+      </defaultVarList>
+      <action>cscript.exe "%SCRIPTROOT%\ZTIPowerShell.wsf</action>
+      <condition>
+        <expression type="SMS_TaskSequence_VariableConditionExpression">
+          <variable name="Variable">BdeInstallSuppress</variable>
+          <variable name="Operator">equals</variable>
+          <variable name="Value">NO</variable>
+        </expression>
+      </condition>
     </step>
     <group expand="true" name="Imaging" description="" disable="false" continueOnError="false">
       <action />
