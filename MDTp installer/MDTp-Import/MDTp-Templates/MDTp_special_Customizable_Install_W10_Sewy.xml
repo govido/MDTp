@@ -61,6 +61,13 @@
       </defaultVarList>
       <action>cscript.exe "%SCRIPTROOT%\ZTISetVariable.wsf"</action>
     </step>
+    <step type="SMS_TaskSequence_SetVariableAction" name="Export_Intune_Hardwarehash" description="" disable="false" continueOnError="false" successCodeList="0 3010">
+      <defaultVarList>
+        <variable name="VariableName" property="VariableName">Export_Intune_Hardwarehash</variable>
+        <variable name="VariableValue" property="VariableValue">YES</variable>
+      </defaultVarList>
+      <action>cscript.exe "%SCRIPTROOT%\ZTISetVariable.wsf"</action>
+    </step>
     <step type="SMS_TaskSequence_SetVariableAction" name="DomainAdmin" description="" disable="false" continueOnError="false" successCodeList="0 3010">
       <defaultVarList>
         <variable name="VariableName" property="VariableName">DomainAdmin</variable>
@@ -237,16 +244,13 @@
     </step>
     <step type="SMS_TaskSequence_RunCommandLineAction" name="TS_Install_Get_Imagename" description="" disable="false" continueOnError="false" startIn="" successCodeList="0 3010" runIn="WinPEandFullOS">
       <defaultVarList>
-        <variable name="PackageID" property="PackageID">
-        </variable>
+        <variable name="PackageID" property="PackageID"></variable>
         <variable name="RunAsUser" property="RunAsUser">false</variable>
-        <variable name="SMSTSRunCommandLineUserName" property="SMSTSRunCommandLineUserName">
-        </variable>
-        <variable name="SMSTSRunCommandLineUserPassword" property="SMSTSRunCommandLineUserPassword">
-        </variable>
+        <variable name="SMSTSRunCommandLineUserName" property="SMSTSRunCommandLineUserName"></variable>
+        <variable name="SMSTSRunCommandLineUserPassword" property="SMSTSRunCommandLineUserPassword"></variable>
         <variable name="LoadProfile" property="LoadProfile">false</variable>
       </defaultVarList>
-      <action>powershell.exe -executionpolicy bypass -command "& {$tsenv = New-Object -COMObject Microsoft.SMS.TSEnvironment; $tsenv.Value('OSDImageName') = (Split-Path $tsenv.Value('INSTALLFROMPATH') -leaf)}"</action>
+      <action>powershell.exe -executionpolicy bypass -command "&amp; {$tsenv = New-Object -COMObject Microsoft.SMS.TSEnvironment; $tsenv.Value('OSDImageName') = (Split-Path $tsenv.Value('INSTALLFROMPATH') -leaf)}"</action>
     </step>
   </group>
   <group name="Validation" disable="false" continueOnError="false" description="Test" expand="true">
@@ -862,6 +866,21 @@
     </step>
   </group>
   <group name="State Restore" disable="false" continueOnError="false" description="" expand="true">
+    <step type="BDD_RunPowerShellAction" name="Intune_Hardwarehash_export" description="" disable="false" continueOnError="false" successCodeList="0 3010">
+      <defaultVarList>
+        <variable name="ScriptName" property="ScriptName">mdtp\TS_Intune_Hardwarehash.ps1</variable>
+        <variable name="Parameters" property="Parameters"></variable>
+        <variable name="PackageID" property="PackageID"></variable>
+      </defaultVarList>
+      <action>cscript.exe "%SCRIPTROOT%\ZTIPowerShell.wsf</action>
+      <condition>
+        <expression type="SMS_TaskSequence_VariableConditionExpression">
+          <variable name="Variable">Export_Intune_Hardwarehash</variable>
+          <variable name="Operator">equals</variable>
+          <variable name="Value">YES</variable>
+        </expression>
+      </condition>
+    </step>
     <condition>
       <expression type="SMS_TaskSequence_VariableConditionExpression">
         <variable name="Variable">PHASE</variable>

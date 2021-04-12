@@ -1,13 +1,23 @@
 $MDTpversion = Get-Content ".\MDTp_Tools\MDTp_Version.txt"
 $domainname = (Get-DnsClient -InterfaceAlias Ethernet*).connectionspecificsuffix
 $dc = (Get-DnsClientServerAddress -InterfaceAlias "Ethernet*" -AddressFamily IPv4).ServerAddresses | Select-Object -First 1
+$customsettings = Get-Content D:\DeploymentShare\Control\CustomSettings.ini
+$TASKSEQUENCEID = $customsettings | Where-Object { $_ -Match "TASKSEQUENCEID" }
+$SkipTaskSequence = $customsettings | Where-Object { $_ -Match "SkipTaskSequence" }
+$sqlstartline = ($customsettings | Select-String -Pattern "CSettings]").LineNumber
+$sqlstopline = ($customsettings | Select-String -Pattern "MMSettings]").LineNumber
+$sqlstartline = $sqlstartline - 1
+$sqlstopline = $sqlstopline - 1
+$CSettings = $customsettings[$sqlstartline..$sqlstopline]
+$activecsettings = ($CSettings | Where-Object { $_ -Match "Parameters=" } | Where-Object { $_ -NotMatch "'" })
+
 Write-Host "Install/Update"
 Write-Host -ForegroundColor Green "MDTp $MDTpversion" 
-pause
-if ((Test-Path -Path "D:\MDTp_Tools\SW_MDTp_Tool\Modules\DartRemoteViewer.exe") -eq $False){
-Write-Host -ForegroundColor Yellow "DartRemoteViewer not found! `r`nBefore continuing copy ---MSDaRT100.msi--- in the same folder as this installscript for DaRT remote support"
 Pause
-msiexec /i MSDaRT100.msi /passive
+if ((Test-Path -Path "D:\MDTp_Tools\SW_MDTp_Tool\Modules\DartRemoteViewer.exe") -eq $False) {
+    Write-Host -ForegroundColor Yellow "DartRemoteViewer not found! `r`nBefore continuing copy ---MSDaRT100.msi--- in the same folder as this installscript for DaRT remote support"
+    Pause
+    msiexec /i MSDaRT100.msi /passive
 }
 mkdir D:\MDTp-Import\Drivers
 mkdir D:\MDTp-Import\PC-Infos
@@ -102,9 +112,27 @@ if (Test-Path -Path "D:\MDTp_Tools\domainconfig.csv") {
         Write-Host -ForegroundColor Yellow "New MDTp-templates $newtemplates are ready to use"
     }
 }
-$customsettings=Get-Content D:\DeploymentShare\Control\CustomSettings.ini
-$SMSTSORGNAME = $customsettings | Where-Object { $_ -Match "SMSTSORGNAME"}
-$customsettings -replace $SMSTSORGNAME, "-SMSTSORGNAME=MDTp 42 $MDTpversion by SeWy" | Set-Content D:\DeploymentShare\Control\CustomSettings.ini
+$customsettingsnew = Get-Content D:\DeploymentShare\Control\CustomSettings.ini
+$SMSTSORGNAME = $customsettingsnew | Where-Object { $_ -Match "SMSTSORGNAME" }
+$customsettingsnew -replace $SMSTSORGNAME, "_SMSTSORGNAME=MDTp 42 $MDTpversion by SeWy" | Set-Content D:\DeploymentShare\Control\CustomSettings.ini
+
+if ($TASKSEQUENCEID -ne "'TaskSequenceID=W10_INSTALL_PXE" -or $SkipTaskSequence -ne "'SkipTaskSequence=YES") {
+    $OLDTASKSEQUENCEID = $TASKSEQUENCEID
+    $OLDSkipTaskSequence = $SkipTaskSequence
+    $confirmkeep = Read-Host "Keep customsettings TS settings (skip/default TS)? (y/n)"
+    if ($confirmkeep -eq 'y') {
+        $customsettingsnew -replace "'TaskSequenceID=W10_INSTALL_PXE", $OLDTASKSEQUENCEID -replace "'SkipTaskSequence=YES", $OLDSkipTaskSequence | Set-Content D:\DeploymentShare\Control\CustomSettings.ini       
+    }
+}
+$customsettingsnew = Get-Content D:\DeploymentShare\Control\CustomSettings.ini
+if ($activecsettings -ne "Parameters=MacAddress") {
+    $OLDCSettings = $activecsettings
+    $confirmkeep = Read-Host "Keep customsettings PC SQL settings (MAC, SERIAL, UUID)? (y/n)"
+    if ($confirmkeep -eq 'y') {
+        $customsettingsnew -replace "Parameters=MacAddress", $OLDCSettings | Set-Content D:\DeploymentShare\Control\CustomSettings.ini
+    }
+}
+
 
 Write-Host -ForegroundColor Green "Install complete"
 Pause
