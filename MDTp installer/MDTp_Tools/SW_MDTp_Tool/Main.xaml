@@ -244,6 +244,7 @@
 						<DataGrid.Columns>
 							<DataGridTextColumn Header="Hostname" Binding="{Binding Hostname}" IsReadOnly="True"/>
 							<DataGridTextColumn Header="Mac" Binding="{Binding ClientID}" IsReadOnly="True"/>
+							<DataGridTextColumn Header="Serialnumber" Binding="{Binding Serialnumber}" IsReadOnly="True"/>
 							<DataGridTextColumn Header="UUID" Binding="{Binding UUID}" IsReadOnly="True"/>
 							<DataGridTextColumn Header="Inv.-No." Binding="{Binding Assettag}" IsReadOnly="True"/>
 							<DataGridTextColumn Header="old TS" Binding="{Binding TasksequenceID}" IsReadOnly="True"/>
@@ -468,6 +469,7 @@
 										</DataGridTextColumn>
 										<DataGridTextColumn Header="DB: Hostname" Binding="{Binding Hostname}" IsReadOnly="True"/>
 										<DataGridTextColumn Header="DB: Mac" Binding="{Binding ClientID}" IsReadOnly="True"/>
+										<DataGridTextColumn Header="Serialnumber" Binding="{Binding Serialnumber}" IsReadOnly="True"/>
 										<DataGridTextColumn Header="DB: Inv.-No." Binding="{Binding Assettag}" IsReadOnly="True"/>
 										<DataGridTextColumn Header="DB: Tasksequence" Binding="{Binding TasksequenceID}" IsReadOnly="True"/>
 										<DataGridTextColumn Header="DB: Drivergroup" Binding="{Binding Drivergroup}" IsReadOnly="True"/>

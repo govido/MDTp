@@ -102,6 +102,9 @@ if (Test-Path -Path "D:\MDTp_Tools\domainconfig.csv") {
         Write-Host -ForegroundColor Yellow "New MDTp-templates $newtemplates are ready to use"
     }
 }
+$customsettings=Get-Content D:\DeploymentShare\Control\CustomSettings.ini
+$SMSTSORGNAME = $customsettings | Where-Object { $_ -Match "SMSTSORGNAME"}
+$customsettings -replace $SMSTSORGNAME, "-SMSTSORGNAME=MDTp 42 $MDTpversion by SeWy" | Set-Content D:\DeploymentShare\Control\CustomSettings.ini
 
 Write-Host -ForegroundColor Green "Install complete"
 Pause
