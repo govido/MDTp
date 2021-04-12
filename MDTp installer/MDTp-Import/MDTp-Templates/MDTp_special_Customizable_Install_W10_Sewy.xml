@@ -246,7 +246,7 @@
         </variable>
         <variable name="LoadProfile" property="LoadProfile">false</variable>
       </defaultVarList>
-      <action>cmd /c echo Set objShell=WScript.CreateObject("Wscript.Shell"):objShell.run "cscript.exe //nologo ""%SCRIPTROOT%\ZTISetVariable.wsf"" /VariableName:OSDImageName /VariableValue:"""^&amp;Split(Mid("%InstallFromPath%",Len("%SourcePath%")),"\")(1)^&amp;"""" &gt; %temp%\test.vbs,1,True &amp;&amp; wscript //nologo %temp%\test.vbs</action>
+      <action>powershell.exe -executionpolicy bypass -command "& {$tsenv = New-Object -COMObject Microsoft.SMS.TSEnvironment; $tsenv.Value('OSDImageName') = (Split-Path $tsenv.Value('INSTALLFROMPATH') -leaf)}"</action>
     </step>
   </group>
   <group name="Validation" disable="false" continueOnError="false" description="Test" expand="true">
