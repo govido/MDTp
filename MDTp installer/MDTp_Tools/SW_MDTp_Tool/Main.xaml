@@ -140,6 +140,26 @@
 					</StackPanel>
 				</StackPanel>
 			</Controls:Flyout>
+			<Controls:Flyout Name="customsettings_flyout" Header="Change Customsettings.ini" Position="Left" Width="auto" MinWidth="350" Theme="Light" Background="Gray" AreAnimationsEnabled="True" AnimateOpacity="True">
+				<StackPanel Orientation="Vertical" HorizontalAlignment="Stretch">
+					<StackPanel Orientation="Vertical" HorizontalAlignment="Stretch">
+						<Label HorizontalAlignment="Left" VerticalAlignment="Top" Content="Preselected TS:" Margin="5,5,5,5"/>
+						<ListBox HorizontalAlignment="Left" BorderBrush="Black" BorderThickness="1" Height="auto" VerticalAlignment="Top" Width="auto" MinWidth="150" Margin="5,5,5,5" Name="preselected_TS_listbox"/>
+						<Label HorizontalAlignment="Left" VerticalAlignment="Top" Content="Skip TS selection for new PCs:" Margin="0,5,5,5"/>
+						<StackPanel Orientation="vertical" HorizontalAlignment="Left">
+							<RadioButton HorizontalAlignment="Left" VerticalAlignment="Top" Content="Skip ON" Margin="5,5,5,5" Name="ts_skip_on_radiobutton" FontWeight="Bold" ToolTip="New PCs will skip TS selection and will install preselected TS"/>
+							<RadioButton HorizontalAlignment="Left" VerticalAlignment="Top" Content="OFF" Margin="5,5,5,5" Name="ts_skip_off_radiobutton" FontWeight="Bold" ToolTip="TS selection will be available for new PCs (not in DB)"/>
+						</StackPanel>
+						<Label HorizontalAlignment="Left" VerticalAlignment="Top" Content="Match PCs in Database with:" Margin="5,5,5,5"/>
+						<StackPanel Orientation="vertical" HorizontalAlignment="Left">
+							<RadioButton HorizontalAlignment="Left" VerticalAlignment="Top" Content="MAC-Address" Margin="5,5,5,5" Name="db_match_mac_radiobutton" FontWeight="Bold" ToolTip="Search for known MAC_Address in database for installs"/>
+							<RadioButton HorizontalAlignment="Left" VerticalAlignment="Top" Content="MAC-Address, Serialnumber (needed for Tabletmode!)" Margin="5,5,5,5" Name="db_match_mac_serial_radiobutton" FontWeight="Bold" ToolTip="Use MAC and Serialnumber to search known devices (usefull for Tabletmode/Wifi only)"/>
+							<RadioButton HorizontalAlignment="Left" VerticalAlignment="Top" Content="MAC-Address, Serialnumber, UUID" Margin="5,5,5,5" Name="db_match_mac_serial_uuid_radiobutton" FontWeight="Bold" ToolTip="Additional UUID option, currently not used alone"/>
+						</StackPanel>
+						<Button Content="Save settings" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="auto" Margin="5,5,5,5" Name="save_customsettings_button"/>
+					</StackPanel>
+				</StackPanel>
+			</Controls:Flyout>
 			<Controls:Flyout Name="FlyOutDomainSettings" Header="Domainsettings" Position="Right" Width="auto" Theme="Light" Background="LightGray" Grid.RowSpan="4" IsPinned="False" Opacity="0.93">
 				<Grid>
 					<StackPanel Orientation="Vertical" Margin="0,0,0,0">
@@ -312,6 +332,18 @@
 										<TextBlock Margin="5,0">Add new tasksequence from templates</TextBlock>
 									</StackPanel>
 								</Button>
+								<StackPanel Name="default_TS_active_stack" Orientation="horizontal" HorizontalAlignment="Center">
+									<Label HorizontalAlignment="Center" VerticalAlignment="Top" Content="Preselected TS:" Margin="0,0,0,0"/>
+									<TextBlock HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="Selected TS" Margin="5,5,5,5" FontWeight="Bold" Name="default_TS_active"/>
+								</StackPanel>
+								<StackPanel Name="skip_TS_selection_stack" Orientation="horizontal" HorizontalAlignment="Center">
+									<Label HorizontalAlignment="Center" VerticalAlignment="Top" Content="Skip TS selection:" Margin="0,0,0,0"/>
+									<TextBlock HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="YES, NO" Margin="5,5,5,5" FontWeight="Bold" Name="skip_TS_selection"/>
+								</StackPanel>
+								<StackPanel Name="sql_database_option_stack" Orientation="horizontal" HorizontalAlignment="Center">
+									<Label HorizontalAlignment="Center" VerticalAlignment="Top" Content="Match SQL-PCs with:" Margin="0,0,0,0"/>
+									<TextBlock HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="MAC, SN, UUID" Margin="5,5,5,5" FontWeight="Bold" Name="sql_database_option"/>
+								</StackPanel>
 							</StackPanel>
 						</Border>
 
@@ -401,6 +433,12 @@
 
 						<Border BorderBrush="#1A00FF0B" Background="#FFDAFFE0" BorderThickness="1" Grid.Row="1" Grid.ColumnSpan="3">
 							<Grid Name="Datagrid">
+								<Button HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,0,0,0" Name="customsettings_flyout_button" Width="auto" ToolTip="Change Customsettings.ini for Tabletmode or preselected TS and skip">
+									<StackPanel Orientation="Horizontal">
+										<iconPacks:PackIconMaterial Kind="pencil"/>
+										<TextBlock Margin="5,0">Change CustomSettings</TextBlock>
+									</StackPanel>
+								</Button>
 								<StackPanel Name="datagrid_buttons" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,5,0,0">
 									<Button IsEnabled="False" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,0,0,0" Name="filter_datagrid_button" Width="auto" ToolTip="Filter database an edit (PXE on/off, TS change, driver change, delete PCs, WoL...)">
 										<StackPanel Orientation="Horizontal">

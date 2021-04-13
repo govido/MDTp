@@ -7,9 +7,10 @@ Import serialnumber or mac
 Begin 1.5:
 
 In-Progress:
-- Bitlocker key backup to MDTp if TPM module is present (testing)
 - Export hardwarehash to MDTp before install for Intune import
+- Change Customsettings from UI
 
+- Bitlocker key backup to MDTp if TPM module is present and working correctly
 - Add local users with TS (users, admins as comma seperated values in TS)
 - Extra driver export tool triggers new powershell windows with admin rights, drivers get imported to MDT automatically
 - Shorcut to customsettings.ini to edit default TS and SQL settings
