@@ -161,15 +161,15 @@
       </defaultVarList>
       <action>cscript.exe "%SCRIPTROOT%\ZTIGather.wsf"</action>
     </step>
-    <step type="SMS_TaskSequence_RunCommandLineAction" name="TS_Install_PC_Name_Inventory" description="" disable="false" continueOnError="false" startIn="" successCodeList="0 3010" runIn="WinPEandFullOS">
+    <step type="BDD_RunPowerShellAction" name="TS_Install_PC_Name_Inventory" description="" disable="false" continueOnError="false" successCodeList="0 3010">
       <defaultVarList>
-        <variable name="PackageID" property="PackageID"></variable>
-        <variable name="RunAsUser" property="RunAsUser">false</variable>
-        <variable name="SMSTSRunCommandLineUserName" property="SMSTSRunCommandLineUserName"></variable>
-        <variable name="SMSTSRunCommandLineUserPassword" property="SMSTSRunCommandLineUserPassword"></variable>
-        <variable name="LoadProfile" property="LoadProfile">false</variable>
+        <variable name="ScriptName" property="ScriptName">MDTp\TS_Install_PC_Name_Inventory.ps1</variable>
+        <variable name="Parameters" property="Parameters">
+        </variable>
+        <variable name="PackageID" property="PackageID">
+        </variable>
       </defaultVarList>
-      <action>powershell -executionpolicy bypass -file "%SCRIPTROOT%\MDTp\TS_Install_PC_Name_Inventory.ps1"</action>
+      <action>cscript.exe "%SCRIPTROOT%\ZTIPowerShell.wsf</action>
       <condition>
         <expression type="SMS_TaskSequence_VariableConditionExpression">
           <variable name="Variable">OSDComputerName</variable>

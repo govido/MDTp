@@ -143,18 +143,23 @@
 			<Controls:Flyout Name="customsettings_flyout" Header="Change Customsettings.ini" Position="Left" Width="auto" MinWidth="350" Theme="Light" Background="Gray" AreAnimationsEnabled="True" AnimateOpacity="True">
 				<StackPanel Orientation="Vertical" HorizontalAlignment="Stretch">
 					<StackPanel Orientation="Vertical" HorizontalAlignment="Stretch">
+						<StackPanel Orientation="vertical" HorizontalAlignment="Left">
+							<RadioButton HorizontalAlignment="Left" VerticalAlignment="Top" Content="OFF" Margin="5,5,5,5" Name="ts_preselect_off_radiobutton" FontWeight="Bold" ToolTip="Show all Tasksequences for new PCs"/>
+							<RadioButton HorizontalAlignment="Left" VerticalAlignment="Top" Content="Preselect" Margin="5,5,5,5" Name="ts_preselect_on_radiobutton" FontWeight="Bold" ToolTip="TS will be already selected by default"/>
+						</StackPanel>
 						<Label HorizontalAlignment="Left" VerticalAlignment="Top" Content="Preselected TS:" Margin="5,5,5,5"/>
 						<ListBox HorizontalAlignment="Left" BorderBrush="Black" BorderThickness="1" Height="auto" VerticalAlignment="Top" Width="auto" MinWidth="150" Margin="5,5,5,5" Name="preselected_TS_listbox"/>
-						<Label HorizontalAlignment="Left" VerticalAlignment="Top" Content="Skip TS selection for new PCs:" Margin="0,5,5,5"/>
+						<Label HorizontalAlignment="Left" VerticalAlignment="Top" Content="Skip TS selection for new PCs (not recommended for Capture/Audit):" Margin="0,5,5,5"/>
 						<StackPanel Orientation="vertical" HorizontalAlignment="Left">
-							<RadioButton HorizontalAlignment="Left" VerticalAlignment="Top" Content="Skip ON" Margin="5,5,5,5" Name="ts_skip_on_radiobutton" FontWeight="Bold" ToolTip="New PCs will skip TS selection and will install preselected TS"/>
 							<RadioButton HorizontalAlignment="Left" VerticalAlignment="Top" Content="OFF" Margin="5,5,5,5" Name="ts_skip_off_radiobutton" FontWeight="Bold" ToolTip="TS selection will be available for new PCs (not in DB)"/>
+							<RadioButton HorizontalAlignment="Left" VerticalAlignment="Top" Content="Skip ON" Margin="5,5,5,5" Name="ts_skip_on_radiobutton" FontWeight="Bold" ToolTip="New PCs will skip TS selection and will install preselected TS"/>
 						</StackPanel>
 						<Label HorizontalAlignment="Left" VerticalAlignment="Top" Content="Match PCs in Database with:" Margin="5,5,5,5"/>
 						<StackPanel Orientation="vertical" HorizontalAlignment="Left">
 							<RadioButton HorizontalAlignment="Left" VerticalAlignment="Top" Content="MAC-Address" Margin="5,5,5,5" Name="db_match_mac_radiobutton" FontWeight="Bold" ToolTip="Search for known MAC_Address in database for installs"/>
 							<RadioButton HorizontalAlignment="Left" VerticalAlignment="Top" Content="MAC-Address, Serialnumber (needed for Tabletmode!)" Margin="5,5,5,5" Name="db_match_mac_serial_radiobutton" FontWeight="Bold" ToolTip="Use MAC and Serialnumber to search known devices (usefull for Tabletmode/Wifi only)"/>
 							<RadioButton HorizontalAlignment="Left" VerticalAlignment="Top" Content="MAC-Address, Serialnumber, UUID" Margin="5,5,5,5" Name="db_match_mac_serial_uuid_radiobutton" FontWeight="Bold" ToolTip="Additional UUID option, currently not used alone"/>
+							<Label HorizontalAlignment="Left" VerticalAlignment="Top" Content="" Margin="5,5,5,5" Name="customsettings_info"/>
 						</StackPanel>
 						<Button Content="Save settings" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="auto" Margin="5,5,5,5" Name="save_customsettings_button"/>
 					</StackPanel>
@@ -337,7 +342,7 @@
 									<TextBlock HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="Selected TS" Margin="5,5,5,5" FontWeight="Bold" Name="default_TS_active"/>
 								</StackPanel>
 								<StackPanel Name="skip_TS_selection_stack" Orientation="horizontal" HorizontalAlignment="Center">
-									<Label HorizontalAlignment="Center" VerticalAlignment="Top" Content="Skip TS selection:" Margin="0,0,0,0"/>
+									<Label HorizontalAlignment="Center" VerticalAlignment="Top" Content="Skip new PC TS selection:" Margin="0,0,0,0"/>
 									<TextBlock HorizontalAlignment="Stretch" TextWrapping="Wrap" Text="YES, NO" Margin="5,5,5,5" FontWeight="Bold" Name="skip_TS_selection"/>
 								</StackPanel>
 								<StackPanel Name="sql_database_option_stack" Orientation="horizontal" HorizontalAlignment="Center">
@@ -452,12 +457,12 @@
 											<TextBlock Margin="5,0">WoL Start</TextBlock>
 										</StackPanel>
 									</Button>
-									<Button IsEnabled="False" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,0,0,0" Name="ping_button" Width="auto" ToolTip="PING selected PCs">
+									<!--<Button IsEnabled="False" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,0,0,0" Name="ping_button" Width="auto" ToolTip="PING selected PCs">
 										<StackPanel Orientation="Horizontal">
 											<iconPacks:PackIconMaterial Kind="swaphorizontal"/>
 											<TextBlock Margin="5,0">Pingcheck</TextBlock>
 										</StackPanel>
-									</Button>
+									</Button>-->
 									<Button IsEnabled="False" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,0,0,0" Name="RDP_main_button" ToolTip="Start RDP-Session for selected PCs">
 										<StackPanel Orientation="Horizontal">
 											<iconPacks:PackIconMaterial Kind="monitor"/>
@@ -471,7 +476,7 @@
 										</StackPanel>
 									</Button>
 								</StackPanel>
-								<DataGrid HorizontalAlignment="Center" Height="auto" Width="auto" VerticalAlignment="Top" Margin="5,40,5,5" Name="DB_datagrid" ToolTip="Select one or mutiple rows and right click to edit">
+								<DataGrid HorizontalAlignment="Center" FrozenColumnCount="1" Height="auto" Width="auto" VerticalAlignment="Top" Margin="5,40,5,5" Name="DB_datagrid" ToolTip="Select one or mutiple rows and right click to edit">
 									<DataGrid.RowStyle>
 										<Style TargetType="DataGridRow">
 											<Style.Triggers>
@@ -494,7 +499,7 @@
 										</Style>
 									</DataGrid.CellStyle>
 									<DataGrid.Columns>
-										<DataGridTextColumn Header="Ping" Binding="{Binding Ping}" IsReadOnly="True">
+										<!--<DataGridTextColumn Header="Ping" Binding="{Binding Ping}" IsReadOnly="True">
 											<DataGridTextColumn.CellStyle>
 												<Style TargetType="DataGridCell">
 													<Style.Triggers>
@@ -504,7 +509,7 @@
 													</Style.Triggers>
 												</Style>
 											</DataGridTextColumn.CellStyle>
-										</DataGridTextColumn>
+										</DataGridTextColumn>-->
 										<DataGridTextColumn Header="DB: Hostname" Binding="{Binding Hostname}" IsReadOnly="True"/>
 										<DataGridTextColumn Header="DB: Mac" Binding="{Binding ClientID}" IsReadOnly="True"/>
 										<DataGridTextColumn Header="Serialnumber" Binding="{Binding Serialnumber}" IsReadOnly="True"/>
@@ -512,7 +517,7 @@
 										<DataGridTextColumn Header="DB: Tasksequence" Binding="{Binding TasksequenceID}" IsReadOnly="True"/>
 										<DataGridTextColumn Header="DB: Drivergroup" Binding="{Binding Drivergroup}" IsReadOnly="True"/>
 										<DataGridTextColumn Header="WDS: PXE-Boot" Binding="{Binding PXE-Boot}" IsReadOnly="True"/>
-										<DataGridTextColumn Header="WDS: Bootimage" Binding="{Binding Bootimage}" IsReadOnly="True"/>
+										<!--<DataGridTextColumn Header="WDS: Bootimage" Binding="{Binding Bootimage}" IsReadOnly="True"/>-->
 										<DataGridTextColumn Header="Log: Image" Binding="{Binding Wim_File}" IsReadOnly="True"/>
 										<DataGridTextColumn Header="Log: last TS" Binding="{Binding Tasksequence_log}" IsReadOnly="True"/>
 										<DataGridTextColumn Header="Log: Mainboard" Binding="{Binding Product}" IsReadOnly="True"/>
