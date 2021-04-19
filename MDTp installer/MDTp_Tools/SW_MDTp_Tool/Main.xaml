@@ -41,12 +41,6 @@
 			<Button Name="LaunchGitHubSite" ToolTip="Brought to you with a lack of sleep and special thanks to the 'Team Soest' for alpha / beta testing all the things and giving ideas for this">
 				<iconPacks:PackIconModern Kind="SmileyHappy" />
 			</Button>
-			<Button Name="Theme">
-				<iconPacks:PackIconMaterial Kind="brightness6" ToolTip="Change the main theme of the tool" />
-			</Button>
-			<Button Name="Accent">
-				<iconPacks:PackIconMaterial Kind="FormatPaint" ToolTip="Change Accent of the tool" />
-			</Button>
 		</Controls:WindowCommands>
 	</Controls:MetroWindow.LeftWindowCommands>
 

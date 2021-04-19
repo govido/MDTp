@@ -2,14 +2,15 @@
 WDS PXE skip in parallel with FTP Thinclients?
 Increase DHCP leasetime from dc tools
 Test MDTp with convertibles and tablets that use network adapters
-Import serialnumber or mac
+Import GPO for Hybrid Azure and Intune MDM from DC Tools
 
 Begin 1.5:
 
 In-Progress:
-- Export hardwarehash to MDTp before install for Intune import
-- Change Customsettings from UI
+- Export hardwarehash to MDTp before install for Intune import / Intune GPO
 
+- Import serialnumber or MAC 
+- Change Customsettings from UI (preselected TS, skip TS selection, DB matching patterns)
 - Bitlocker key backup to MDTp if TPM module is present and working correctly
 - Add local users with TS (users, admins as comma seperated values in TS)
 - Extra driver export tool triggers new powershell windows with admin rights, drivers get imported to MDT automatically
