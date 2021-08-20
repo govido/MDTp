@@ -28,8 +28,8 @@ mkdir D:\MDTp-Import\WIM-Images
 mkdir D:\MDTp-Import\MDTp-Templates
 mkdir D:\MDTp_Tools\Import-Logs
 mkdir D:\DeploymentShare\MDTp_Staggered_Deploy
-mkdir D:\DeploymentShare\Scripts\MDTp\OS_Import
-mkdir D:\DeploymentShare\Scripts\MDTp\WDS_PXE
+mkdir D:\DeploymentShare\Scripts\MDTp\Servertasks\OS_Import
+mkdir D:\DeploymentShare\Scripts\MDTp\Servertasks\WDS_PXE
 robocopy .\MDTp_Tools D:\MDTp_Tools /E
 robocopy .\MDTp_Tools\Shortcuts "C:\Users\Public\Desktop"
 robocopy .\MDTp-Import D:\MDTp-Import /E
@@ -46,7 +46,7 @@ New-SmbShare -Name "MDTp-Import$" -Path "D:\MDTp-Import" -FullAccess Administrat
 Clear-Host
 Write-Host "Litetouch and Zerotouch need to be updated with MDTp_Tool for DaRT-Support! (remote Windows PE)"
 $localmdtpassword = Read-Host -Prompt 'Enter local MDTp Administrator password'
-(Get-Content "D:\DeploymentShare\Control\Bootstrap_Zerotouch.ini") | ForEach-Object { $_ -replace "YOURlocalMDTpADMINpassword", $localmdtpassword -replace "mdtp", $env:computername } | Set-Content "D:\DeploymentShare\Control\Bootstrap_Zerotouch.ini"
+(Get-Content "D:\DeploymentShare\Control\Bootstrap_Zerotouch.ini") | ForEach-Object { $_ -replace "YOURlocalMDTpADMINpassword", $localmdtpassword } | Set-Content "D:\DeploymentShare\Control\Bootstrap_Zerotouch.ini"
 $SQLuser = Read-Host -Prompt 'Enter SQL username (admin), press ENTER for default'
 $SQLpassword = Read-Host -Prompt 'Enter SQL password'
 $sqldatabase = Read-Host -Prompt 'Enter SQL database name (mdt), press ENTER for default'

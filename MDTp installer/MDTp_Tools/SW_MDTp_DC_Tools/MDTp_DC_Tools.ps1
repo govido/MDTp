@@ -2504,13 +2504,13 @@ $Xaml = @"
 </Window.Resources>
 
 <Grid Margin="-1,-1,1,1">
- <Button Content="DHCP-Optionen für MDTp setzen" VerticalAlignment="Top" Margin="70,40,470,0" Name="dhcp_options" BorderBrush="#d0021b"/>
-<Button Content="DHCP-Leases auf MDTp exportieren" VerticalAlignment="Top" Margin="70,90,470,0" BorderBrush="#7ed321" Name="kgkorgaj1m5ws"/>
+ <Button Content="Set static DHCP options (deprecated)" VerticalAlignment="Top" Margin="70,40,470,0" Name="dhcp_options" BorderBrush="#d0021b"/>
+<Button Content="Export DHCP-Leases to MDTp" VerticalAlignment="Top" Margin="70,90,470,0" BorderBrush="#7ed321" Name="kgkorgaj1m5ws"/>
 <TextBox HorizontalAlignment="Left" VerticalAlignment="Top" Height="23" Width="171" TextWrapping="Wrap" Margin="360,40,0,0" Name="DHCPtextbox" Text="$DHCPscope"/>
 <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" Margin="600,27,0,0" Name="scopeError"/>
 <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" Text="Status" Margin="70,150,0,0" Name="status"/>
-<Label HorizontalAlignment="Left" VerticalAlignment="Top" Content="DHCP-Scope für MDTp (automatisch ausgelesen, wenn nötig anpassen):" Margin="360,9,0,0" Width="427" Height="42" Name="Dhcp_Label"/>
-<Label HorizontalAlignment="Left" VerticalAlignment="Top" Content="DHCP-Leases auf MDTp exportieren (Datum wird eingefügt)" Margin="360,88,0,0" Name="export_label"/>
+<Label HorizontalAlignment="Left" VerticalAlignment="Top" Content="DHCP-Scope for MDTp (automatic detection, change if necessary):" Margin="360,9,0,0" Width="427" Height="42" Name="Dhcp_Label"/>
+<Label HorizontalAlignment="Left" VerticalAlignment="Top" Content="Export DHCP-Leases to MDTp (Date will be added)" Margin="360,88,0,0" Name="export_label"/>
 </Grid>
 </Window>
 "@
@@ -2602,5 +2602,3 @@ $dhcp_options.Add_Click({dhcp_options_set $this $_})
 $kgkorgaj1m5ws.Add_Click({dhcp_leases_export $this $_})
 
 $Window.ShowDialog()
-
-

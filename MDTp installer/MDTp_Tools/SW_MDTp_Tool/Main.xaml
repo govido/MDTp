@@ -224,13 +224,13 @@
 				<Grid>
 					<Grid.ColumnDefinitions>
 						<ColumnDefinition Width="1*" />
-						<ColumnDefinition Width="1*" MinWidth="300" />
+						<ColumnDefinition Width="1*" MinWidth="250" />
 						<ColumnDefinition Width="1*" />
 					</Grid.ColumnDefinitions>
 					<Grid.RowDefinitions>
 						<RowDefinition Height="auto" />
 						<RowDefinition Height="auto" />
-						<RowDefinition Height="auto" />
+						<RowDefinition Height="*" />
 						<RowDefinition Height="auto" />
 					</Grid.RowDefinitions>
 					<Button Content="Open CSV" Grid.Row="0" Grid.Column="3" HorizontalAlignment="Right" VerticalAlignment="Top" Background="LightGreen" Width="120" Margin="5,5,5,5" Name="select_csv_button" ToolTip="Select CSV to import, edit or delete (at least MAC and Hostname needed)"/>
@@ -251,7 +251,7 @@
 						<Label HorizontalAlignment="Left" VerticalAlignment="Top" Content="test" Margin="5,5,5,5" Name="savepath_label"/>
 						<TextBox Visibility="Hidden" HorizontalAlignment="Left" VerticalAlignment="Top" Height="26" Width="300" TextWrapping="Wrap" Margin="5,5,5,5" Name="save_csv_text"/>
 					</StackPanel>
-					<StackPanel Name="ts_os_info_stack" Grid.Row="1" Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Stretch" Margin="5,5,5,5">
+					<StackPanel Name="ts_os_info_stack"  Height="auto" Width="auto" VerticalAlignment="Top" Grid.Row="1" Grid.Column="1" Orientation="Vertical" HorizontalAlignment="Stretch" Margin="5,5,5,5">
 						<TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" Text="TS Beschreibung:" Margin="5,5,5,5" FontWeight="Bold"/>
 						<TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" Text="TS-Info" MaxWidth="650" Margin="5,5,5,5" Name="tsinfo_db_text"/>
 						<TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" TextWrapping="Wrap" Text="OS Image Info:" Margin="5,5,5,5" FontWeight="Bold" Name="osname_db_text"/>
@@ -259,7 +259,7 @@
 					</StackPanel>
 					<Button Content="Import/Update database" Grid.Row="3" Grid.Column="2" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="auto" BorderBrush="Green" Margin="5,5,5,5" Name="import_csv_button" ToolTip="Import all PCs with shown settings, exisisting entries will be updated"/>
 					<Button Content="Delete from database" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Bottom" Width="auto" BorderBrush="Crimson" Margin="5,5,5,5" Name="delete_csv_button" ToolTip="delete PCs permanently from database, use with caution"/>
-					<DataGrid HorizontalAlignment="Center" Grid.Row="2" Grid.ColumnSpan="3" VerticalAlignment="Top" Width="auto" Height="auto" Margin="10,5,5,5" AlternatingRowBackground="LightBlue" Name="pcs_datagrid">
+					<DataGrid Grid.Row="2" Grid.ColumnSpan="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="10,5,5,5" AlternatingRowBackground="LightBlue" Name="pcs_datagrid">
 						<DataGrid.Columns>
 							<DataGridTextColumn Header="Hostname" Binding="{Binding Hostname}" IsReadOnly="True"/>
 							<DataGridTextColumn Header="Mac" Binding="{Binding ClientID}" IsReadOnly="True"/>
