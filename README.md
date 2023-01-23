@@ -87,26 +87,41 @@ MDTp contains Tools for different workflows for creating and deploying images to
     - Set BIOS password
     - Apply BIOS settings for specific models    
     
-Wishlist:
+18. Register Devices in Intune automatically
+   - Deploy custom system image with known software and drivers
+   - No need to upload hardware hashes manually (you can do that if no internet connection is available, CSVs will be generated too, per day)
+   - The MDT PC name will be applied after Azure AD and Intune sync process
+   - Tasks sequences can be customized per customer with pre-provisioned Autopilot-Profiles
+   - No need for Microsoft Account login data, APP security tokens are used with restricted access
 
-- DHCP server leasetime change (longer to account for holidays etc.)
+Wishlist:
 - Change hostnames in import-dialog -> correct wrong spelled names etc. easier
 - WDS PXE for thin-clients -> making one imageserver for install and thin-clients, making tftp obsolete
 - Make SQL queries faster and in parallel
-- Intune TS for autopilot / hybrid join scenarios
-
+- Import GPO for Hybrid Azure and Intune MDM from DC Tools
+- DHCP server leasetime change from dc tools (longer to account for holidays etc.)
+- Reload certain UI elements automatically
 
 Mainwindow
-![Mainwindow](Screenshots/Screen1.png)
+![Mainwindow](Screenshots/MDTp_v1.5_Status.jpg)
 Monitoring
 ![Mainwindow](Screenshots/Screen2.png)
 New TS, refresh DS
-![Mainwindow](Screenshots/Screen3.png)
-PC-Info, delete
+![Mainwindow](Screenshots/MDTp_v1.5_Logs.jpg)
+Options, Logs
 ![Mainwindow](Screenshots/Screen4.png)
-DB-import / delete flyout
+DB-import / delete / modify
 ![Mainwindow](Screenshots/Screen5_DB_import.png)
 Domain config / template import
 ![Mainwindow](Screenshots/Screen6_domain_config.png)
 TS info / OS change
 ![Mainwindow](Screenshots/Screen7_ts_info_os_change.png)
+
+
+What you need:
+
+- Windows Server
+- WDS Role installed
+- Installed MDT with 1 OS imported to start
+- SQL / SQL-Express with configured MDT database connection
+- Windows DART Installer (MSDaRT100.msi)

@@ -1,10 +1,4 @@
-﻿Wishlist:
-WDS PXE skip in parallel with FTP Thinclients?
-Increase DHCP leasetime from dc tools
-Test MDTp with convertibles and tablets that use network adapters
-Import GPO for Hybrid Azure and Intune MDM from DC Tools
-
-Version 1.5:
+﻿Version 1.5:
 
 - Export hardwarehash to MDTp before install for Intune
 - Use Intune Autopilot for Deploymentshare
