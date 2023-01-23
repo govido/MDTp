@@ -4,10 +4,15 @@ Increase DHCP leasetime from dc tools
 Test MDTp with convertibles and tablets that use network adapters
 Import GPO for Hybrid Azure and Intune MDM from DC Tools
 
-Begin 1.5:
+Version 1.5:
+
+- Export hardwarehash to MDTp before install for Intune
+- Use Intune Autopilot for Deploymentshare
+- Use Azure AD App Token without passwords
+
 
 In-Progress:
-- Export hardwarehash to MDTp before install for Intune import / Intune GPO
+
 
 - Import serialnumber or MAC 
 - Change Customsettings from UI (preselected TS, skip TS selection, DB matching patterns)
