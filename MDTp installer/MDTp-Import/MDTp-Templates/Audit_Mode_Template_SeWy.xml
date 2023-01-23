@@ -489,16 +489,6 @@
       </defaultVarList>
       <action>smsboot.exe /target:WinPE</action>
     </step>
-    <step type="SMS_TaskSequence_RunCommandLineAction" name="Audit" description="" disable="false" continueOnError="false" startIn="C:\Windows\System32\Sysprep" successCodeList="0 3010" runIn="WinPEandFullOS">
-      <defaultVarList>
-        <variable name="PackageID" property="PackageID"></variable>
-        <variable name="RunAsUser" property="RunAsUser">false</variable>
-        <variable name="SMSTSRunCommandLineUserName" property="SMSTSRunCommandLineUserName"></variable>
-        <variable name="SMSTSRunCommandLineUserPassword" property="SMSTSRunCommandLineUserPassword"></variable>
-        <variable name="LoadProfile" property="LoadProfile">false</variable>
-      </defaultVarList>
-      <action>cmd.exe /c C:\Windows\System32\Sysprep\sysprep.exe /generalize /audit /reboot</action>
-    </step>
   </group>
   <group name="State Restore" disable="true" continueOnError="false" description="" expand="true">
     <condition>
@@ -523,6 +513,16 @@
         <variable name="SMSTSRunCommandLineUserPassword" property="SMSTSRunCommandLineUserPassword"></variable>
         <variable name="LoadProfile" property="LoadProfile">false</variable>
       </defaultVarList>
+    </step>
+    <step type="SMS_TaskSequence_RunCommandLineAction" name="Audit" description="" disable="false" continueOnError="false" startIn="C:\Windows\System32\Sysprep" successCodeList="0 3010" runIn="WinPEandFullOS">
+      <defaultVarList>
+        <variable name="PackageID" property="PackageID"></variable>
+        <variable name="RunAsUser" property="RunAsUser">false</variable>
+        <variable name="SMSTSRunCommandLineUserName" property="SMSTSRunCommandLineUserName"></variable>
+        <variable name="SMSTSRunCommandLineUserPassword" property="SMSTSRunCommandLineUserPassword"></variable>
+        <variable name="LoadProfile" property="LoadProfile">false</variable>
+      </defaultVarList>
+      <action>cmd.exe /c C:\Windows\System32\Sysprep\sysprep.exe /generalize /audit /reboot</action>
     </step>
     <step type="BDD_RecoverDomainJoin" name="Recover From Domain " description="" disable="false" continueOnError="false" runIn="WinPEandFullOS" successCodeList="0 3010">
       <defaultVarList>

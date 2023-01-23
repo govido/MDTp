@@ -68,13 +68,6 @@
       </defaultVarList>
       <action>cscript.exe "%SCRIPTROOT%\ZTISetVariable.wsf"</action>
     </step>
-    <step type="SMS_TaskSequence_SetVariableAction" name="Enable Bitlocker with TPM" description="" disable="false" continueOnError="false" successCodeList="0 3010">
-      <defaultVarList>
-        <variable name="VariableName" property="VariableName">BdeInstallSuppress</variable>
-        <variable name="VariableValue" property="VariableValue">NO</variable>
-      </defaultVarList>
-      <action>cscript.exe "%SCRIPTROOT%\ZTISetVariable.wsf"</action>
-    </step>
     <step type="SMS_TaskSequence_SetVariableAction" name="Set_BIOS_PW" description="" disable="false" continueOnError="false" successCodeList="0 3010">
       <defaultVarList>
         <variable name="VariableName" property="VariableName">BIOS_PW</variable>
@@ -703,15 +696,6 @@
         <variable name="LoadProfile" property="LoadProfile">false</variable>
       </defaultVarList>
     </step>
-    <step type="SMS_TaskSequence_RunCommandLineAction" name="Enable BitLocker (Offline)" description="" disable="false" continueOnError="true" startIn="" successCodeList="0 3010" runIn="WinPEandFullOS">
-      <action>cscript.exe "%SCRIPTROOT%\ZTIBDE.wsf"</action>
-      <defaultVarList>
-        <variable name="RunAsUser" property="RunAsUser">false</variable>
-        <variable name="SMSTSRunCommandLineUserName" property="SMSTSRunCommandLineUserName"></variable>
-        <variable name="SMSTSRunCommandLineUserPassword" property="SMSTSRunCommandLineUserPassword"></variable>
-        <variable name="LoadProfile" property="LoadProfile">false</variable>
-      </defaultVarList>
-    </step>
     <step type="SMS_TaskSequence_SetVariableAction" name="MDTp_Drivergroup_SQL_Special" description="DriverGroup from SQL database will be used instead of mainboard detection (Custom driver for special PCs etc.)" disable="false" continueOnError="false" successCodeList="0 3010">
       <defaultVarList>
         <variable name="VariableName" property="VariableName">DriverGroup001</variable>
@@ -915,23 +899,6 @@
       </defaultVarList>
     </step>
     <group name="Custom Tasks" disable="false" continueOnError="false" expand="true" description=""></group>
-    <step type="SMS_TaskSequence_EnableBitLockerAction" name="Enable BitLocker" continueOnError="true" successCodeList="0 3010" description="" startIn="" disable="false">
-      <action>cscript.exe "%SCRIPTROOT%\ZTIBde.wsf"</action>
-      <condition>
-        <expression type="SMS_TaskSequence_VariableConditionExpression">
-          <variable name="Variable">BdeInstallSuppress</variable>
-          <variable name="Operator">notEquals</variable>
-          <variable name="Value">YES</variable>
-        </expression>
-      </condition>
-      <defaultVarList>
-        <variable name="OSDBitLockerTargetDrive" property="BdeTargetDriveLetter"></variable>
-        <variable name="OSDBitLockerMode" property="BdeInstall">TPM</variable>
-        <variable name="OSDBitLockerStartupKeyDrive" property="BdeKeyLocation"></variable>
-        <variable name="OSDBitLockerCreateRecoveryPassword" property="BdeRecoveryPassword">AD</variable>
-        <variable name="OSDBitLockerWaitForEncryption" property="WaitForEncryption">false</variable>
-      </defaultVarList>
-    </step>
     <step type="SMS_TaskSequence_RunCommandLineAction" name="TS_Install_Local_Users" description="" disable="false" continueOnError="false" startIn="" successCodeList="0 3010" runIn="WinPEandFullOS">
       <defaultVarList>
         <variable name="PackageID" property="PackageID"></variable>
@@ -958,21 +925,6 @@
         </variable>
       </defaultVarList>
       <action>cscript.exe "%SCRIPTROOT%\ZTIPowerShell.wsf</action>
-    </step>
-    <step type="BDD_RunPowerShellAction" name="Bitlocker_local_MDTp_Keybackup" description="" disable="false" continueOnError="false" successCodeList="0 3010">
-      <defaultVarList>
-        <variable name="ScriptName" property="ScriptName">MDTp\TS_Bitlocker_MDTp_Keybackup.ps1</variable>
-        <variable name="Parameters" property="Parameters"></variable>
-        <variable name="PackageID" property="PackageID"></variable>
-      </defaultVarList>
-      <action>cscript.exe "%SCRIPTROOT%\ZTIPowerShell.wsf</action>
-      <condition>
-        <expression type="SMS_TaskSequence_VariableConditionExpression">
-          <variable name="Variable">BdeInstallSuppress</variable>
-          <variable name="Operator">equals</variable>
-          <variable name="Value">NO</variable>
-        </expression>
-      </condition>
     </step>
     <step type="SMS_TaskSequence_RunCommandLineAction" name="Autopilot OOBE" description="" disable="false" continueOnError="false" startIn="C:\Windows\System32\Sysprep" successCodeList="0 3010" runIn="WinPEandFullOS">
       <defaultVarList>

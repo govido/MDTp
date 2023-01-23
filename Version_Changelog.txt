@@ -9,11 +9,7 @@ Version 1.5:
 - Export hardwarehash to MDTp before install for Intune
 - Use Intune Autopilot for Deploymentshare
 - Use Azure AD App Token without passwords
-
-
-In-Progress:
-
-
+- Fix Audit Template
 - Import serialnumber or MAC 
 - Change Customsettings from UI (preselected TS, skip TS selection, DB matching patterns)
 - Bitlocker key backup to MDTp if TPM module is present and working correctly
