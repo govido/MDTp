@@ -3,7 +3,7 @@
 What it does:
 
 Tools to use with MDT, SQL and WDS servers with installed ADK.
-This version is currently tested with Windows 10 2004!
+This version is currently tested with Windows 10 / 11 22H2!
 
 MDTp contains Tools for different workflows for creating and deploying images to client-pcs:
 
